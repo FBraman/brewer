@@ -1,0 +1,25 @@
+<h1>recipe goes here</h1>
+		<div>
+      <%= @recipe.recipe_name %>
+      <%= @recipe.target_volume %>
+    </div>
+
+    <div>
+    	<% @recipe.ingredients.each do |ingredient| %>
+    		<ul>
+    			<li><%= ingredient.amount  %>  <%= ingredient.component.name %>  </li>
+    		</ul>
+    	<% end %>
+  	</div>
+
+      <
+
+    </div>
+
+    <div>
+      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
+    </div>
+
+
+
+<%= render "/ingredients/form" %>
