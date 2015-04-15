@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :recipes
 
-  validates :username, uniqueness: true
+  validates :username, presence: true, uniqueness: true
 
   def admin
-  	role == "adim"
+  	role == "admin"
   end
 end
