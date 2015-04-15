@@ -12,6 +12,7 @@ class IngredientsController <  ApplicationController
 	def create
     @ingredient = Ingredient.create(ingredient_params)
     if @ingredient.save
+      binding.pry
       redirect_to recipe_path(@ingredient.recipe)
     else
       flash[:notice] = "Failed to save your fermentable."
@@ -20,7 +21,8 @@ class IngredientsController <  ApplicationController
   end
 
   def ingredient_params
-  	params.require(:ingredient).permit(:recipe_id, :component_id, :amount)
+  	params.require(:ingredient).permit(:recipe_id, 
+      :component_id, :version, :amount)
   end
 
 end

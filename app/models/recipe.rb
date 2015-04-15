@@ -9,12 +9,13 @@ class Recipe < ActiveRecord::Base
 	def strike_water
 		grain = 0
 		ingredients.each do |ing|
-			grain += ing.amount
+			if ing.component.version == "fermentable"
+				grain += ing.amount
+			end
 		end
 		(grain * mash_thickness) / 4.0
 	end
 
-	def
 
 	def owner?(current_user)
     user == current_user

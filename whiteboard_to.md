@@ -47,5 +47,6 @@ lets get some devise user sign in action going so that recipes can be properly a
 		strike water calc working based on mash thickness, will also need to add an system efficiency variable for recipe default of 70, 
 		boiloff variable with default of 1.g/hour
 		-right now, focus on getting values into db in order to manipulate them
+	-got csv into db with appropriate info for each ingredient, now how to separate logic of different ingredient verisons, need to pass that as an attribute for an ingredient object
 		
 	
