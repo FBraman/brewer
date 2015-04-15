@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: :registrations }
   root "recipes#index"
-  resources :users
+
   resources :recipes do 
     resources :ingredients
   end
