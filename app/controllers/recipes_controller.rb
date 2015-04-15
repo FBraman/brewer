@@ -30,13 +30,6 @@ class RecipesController < ApplicationController
     redirect_to recipes_path, notice: 'Recipe deleted successfully!'
 	end
 
-	def strike_water
-		grain = 0
-		@recipe.ingredients.each do |x|
-			x.amount += grain
-		end
-		(grain * @recipe.mash_thickness)/4
-	end
 
 
 	# def total_water

@@ -12,10 +12,12 @@
     	<% end %>
   	</div>
 
+    <%= @recipe.strike_water %>
+
+    </div>
+
     <div>
       <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
     </div>
-
-
 
 <%= render "/ingredients/form" %>
