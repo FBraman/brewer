@@ -13,4 +13,10 @@ class Recipe < ActiveRecord::Base
 		end
 		(grain * mash_thickness) / 4.0
 	end
+
+	def
+
+	def owner?(current_user)
+    user == current_user
+  end
 end

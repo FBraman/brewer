@@ -42,4 +42,10 @@ lets get some devise user sign in action going so that recipes can be properly a
 	make sure destroy is set up for all extant features, so that CRUD will be in effect
 		-destroy for recipe working, make sure only the owner can do it
 		-only in the view?
+		-destroy, authenticate user in model, and hide button in view?
+		-cannot add ingredient unless owner of recipe, but only thourgh view manipulation, how to add to controller?
+		strike water calc working based on mash thickness, will also need to add an system efficiency variable for recipe default of 70, 
+		boiloff variable with default of 1.g/hour
+		-right now, focus on getting values into db in order to manipulate them
+		
 	

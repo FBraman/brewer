@@ -10,14 +10,17 @@
     			<li><%= ingredient.amount  %>  <%= ingredient.component.name %>  </li>
     		</ul>
     	<% end %>
+
   	</div>
-
     <%= @recipe.strike_water %>
-
     </div>
 
+    <% if @recipe.owner?(current_user) %>
     <div>
       <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
     </div>
+    <% end %>
 
-<%= render "/ingredients/form" %>
+<% if @recipe.owner?(current_user) %>
+  <%= render "/ingredients/form" %>
+<% end %>
