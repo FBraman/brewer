@@ -48,5 +48,13 @@ lets get some devise user sign in action going so that recipes can be properly a
 		boiloff variable with default of 1.g/hour
 		-right now, focus on getting values into db in order to manipulate them
 	-got csv into db with appropriate info for each ingredient, now how to separate logic of different ingredient verisons, need to pass that as an attribute for an ingredient object
+		-can fit formula to ingredient.component.verison, but I will need to further subdivide the components list to fit other formulas, like for instanc, I won't need to calculate the strike water for DME, though it is a fermentable
 		
+	4/16, things to do, 
+		-merge current local master with github(done)
+		-overall, finish up basic crud, (create recipe, delete recipe, add ingredient, delete ingredient, create user, update user, delete user, edit recipe,)
+				-remove recipe items, view/ edit, functions, dependent on user ownership (done)
+				-label attributes of recipe that are there/make formulas for baiscs, water amounts, (sparge calculator?) gravity amounts pre and post boil
+		-make a splash page, with some simple js, like make links glow when hovered over
+		-further subdivide versions(types) of ingredients, see if you can get hops and fermentables in two different drop down menus, 
 	

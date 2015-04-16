@@ -1,17 +1,23 @@
-<h1>recipe goes here</h1>
+
 		<div>
-      <%= @recipe.recipe_name %>
-      <%= @recipe.target_volume %>
+      <h2>
+        Recipe:
+        <%= @recipe.recipe_name %>
+        Target volume:
+        <%= @recipe.target_volume %> g
+      </h2>
     </div>
 
     <div>
     	<% @recipe.ingredients.each do |ingredient| %>
     		<ul>
-    			<li><%= ingredient.amount  %>  <%= ingredient.component.name %>  </li>
+    			<li><%= ingredient.amount  %>  lbs.
+            <%= ingredient.component.name %>  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %></li>
     		</ul>
     	<% end %>
 
   	</div>
+    Strike water
     <%= @recipe.strike_water %>
     </div>
 
