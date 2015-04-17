@@ -54,7 +54,21 @@ lets get some devise user sign in action going so that recipes can be properly a
 		-merge current local master with github(done)
 		-overall, finish up basic crud, (create recipe, delete recipe, add ingredient, delete ingredient, create user, update user, delete user, edit recipe,)
 				-remove recipe items, view/ edit, functions, dependent on user ownership (done)
-				-label attributes of recipe that are there/make formulas for baiscs, consider where to add, system loss, boil-off rate, grain absorption, water amounts, (sparge calculator?) gravity amounts pre and post boil
+				-label attributes of recipe that are there/make formulas for baiscs, consider where to add, system loss, boil-off rate, grain absorption, water amounts, (sparge calculator?) gravity amounts pre and post boil(done, but formulas need verifying, and process comparison, biab vs 3 vessel)
 		-make a splash page, with some simple js, like make links glow when hovered over
 		-further subdivide versions(types) of ingredients, see if you can get hops and fermentables in two different drop down menus, 
+
+	4/17, todo, 
+		-rebuild components table to include yeast attributes, (done)
+		-add yeast to db, components to calcuate target final gravity, (done) 
+		-subdivide fermentables, into further categories, sugars, mashed_grain, (done, feremntable-grain, fermentable-dme, fermentable-sugar)
+		-get separate dropdowns for ingredient types
+		-find place to put extraction efficiency, write gravity formulas so that fermentable_grains are calculated against an extraction efficency,
+				-efficiency as selectable for recipe on recipe show page, but has a default of 70 
+				-give mash thickness a default of 1.5
+		-add show final grav calc only if yeast is among selected ingredients, 
+					-going to put it on the recipe create form, maybe eventually be a system, so a user could have many systems, but for now, field with default on recipe create page
+		-develop list of steps for 3 vessel process, and BIAB, create tables, steps and process, process would be a join table with recipe_id, step_id and proecess notes
+		-also need a dictionary, brewing terms mash sparge, etc, and ingredients, malt, hops, bittering, non fermentable sugar
+
 	

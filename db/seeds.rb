@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require "csv"
 
-CSV.foreach((Rails.root.join + "db/csv/components4_15.csv"), { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
+CSV.foreach((Rails.root.join + "db/csv/components4_17.csv"), { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
   Component.create(row.to_hash)
 end

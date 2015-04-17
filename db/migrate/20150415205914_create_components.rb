@@ -6,7 +6,11 @@ class CreateComponents < ActiveRecord::Migration
     	t.float :aa
     	t.float :ppg
     	t.float :srm
+        t.integer :attenuation
+        t.string :temperature_range
     	t.text :description
+        t.string :alcohol_tolerance
+        t.string :flocculation
     end
   end
 end

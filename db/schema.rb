@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 20150415205914) do
   enable_extension "plpgsql"
 
   create_table "components", force: :cascade do |t|
-    t.string "version"
-    t.string "name",        null: false
-    t.float  "aa"
-    t.float  "ppg"
-    t.float  "srm"
-    t.text   "description"
+    t.string  "version"
+    t.string  "name",              null: false
+    t.float   "aa"
+    t.float   "ppg"
+    t.float   "srm"
+    t.integer "attenuation"
+    t.string  "temperature_range"
+    t.text    "description"
+    t.string  "alcohol_tolerance"
+    t.string  "flocculation"
   end
 
   create_table "ingredients", force: :cascade do |t|
