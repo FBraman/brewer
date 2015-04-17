@@ -17,9 +17,26 @@
     	<% end %>
 
   	</div>
-    Strike water
-    <%= @recipe.strike_water %>
+      Strike water: 
+      <%= @recipe.strike_water %>
     </div>
+
+    </div>
+      Sparge water: 
+      <%= @recipe.sparge_water %>
+    </div>
+
+    </div>
+      Preboil gravity: 
+      <%= @recipe.preboil_gravity %>
+    </div>
+
+    </div>
+      Target original gravity: 
+      <%= @recipe.target_og %>
+    </div>
+
+
 
     <% if @recipe.owner?(current_user) %>
     <div>
