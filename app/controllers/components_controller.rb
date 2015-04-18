@@ -8,7 +8,7 @@ class ComponentsController < ApplicationController
 	end
 
 	def index
-		@component.all
+		@components = Component.all
 	end
 
 

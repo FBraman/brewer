@@ -75,7 +75,6 @@ class Recipe < ActiveRecord::Base
 		ingredients.each do |ingredient|
 			if ingredient.component.version == "yeast" && ingredient.component.attenuation > attn
 				attn = ingredient.component.attenuation
-				binding.pry
 			end
 		end
 		fermented_gravity  =             (    (target_og - 1)   * 1000)         *       (attn.to_f/100)

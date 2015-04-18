@@ -15,7 +15,7 @@
         <% @recipe.ingredients.each do |ingredient| %>
           <ul>
             <% if ingredient.component.version == "yeast" %>
-            <li><%= ingredient.amount  %>  vials/smack pack(s) <%= ingredient.component.name %>  
+            <li><%= ingredient.amount  %>  vials/smack pack(s) <%=link_to ingredient.component.name, component_path(ingredient.component) %>  
                 <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
             </li>
           </ul>
@@ -26,7 +26,7 @@
     	<% @recipe.ingredients.each do |ingredient| %>
     		<ul>
           <% if ingredient.component.version.include? "fermentable" %>
-    			<li><%= ingredient.amount  %>  lbs. <%= ingredient.component.name %>  
+    			<li><%= ingredient.amount  %>  lbs. <%= link_to ingredient.component.name, component_path(ingredient.component) %>  
               <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
           </li>
     		</ul>
@@ -65,7 +65,7 @@
       <%= @recipe.projected_final_gravity %>
     </div>
 
-    
+
 
 
     <% if @recipe.owner?(current_user) %>
@@ -73,6 +73,12 @@
       <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
     </div>
     <% end %>
+
+      <div>
+      <%= link_to "Learn more about Ingredients", components_path %>
+    </div>
+    
+
 
 <% if @recipe.owner?(current_user) %>
   <%= render "/ingredients/form" %>

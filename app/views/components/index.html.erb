@@ -1,0 +1,11 @@
+<h1>Ingredients</h1>
+
+<div><%= link_to "Recipes", recipes_path %></div>
+
+		<div>
+			<ol>
+				<% @components.each do |component| %>
+					<div><li><%= link_to component.name, component %></li></div>
+				<% end %>
+			</ol> 
+		</div>
