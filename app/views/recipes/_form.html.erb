@@ -28,7 +28,12 @@
 
       <div class="field">
         <%= f.label :mash_thickness %> <p>qts per pound of grain</p>
-        <%= f.number_field :mash_thickness, class: "text_field", step: 0.01 %>
+        <%= f.number_field :mash_thickness, class: "text_field", step: 0.01, value: 1.5 %>
+      </div>
+
+       <div class="field">
+        <%= f.label :efficiency %>
+        <%= f.number_field :efficiency, class: "text_field", value: 70 %><br>
       </div>
 
       <div class="actions">

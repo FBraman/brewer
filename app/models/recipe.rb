@@ -8,6 +8,10 @@ class Recipe < ActiveRecord::Base
 
 	BOIL_OFF = 1
 
+	def recipe_efficiency
+		ingredients[0].recipe.efficiency
+	end
+
 	def grain_amount
 		grain = 0
 		ingredients.each do |ingredient|
@@ -45,16 +49,19 @@ class Recipe < ActiveRecord::Base
 	def total_gravity
 		gravity_points = 0
 		ingredients.each do |ingredient|
-			if ingredient.component.version == "fermentable_grain"
-				gravity_points += ((((ingredient.component.ppg - 1) * 1000) * ingredient.amount) * efficinecy)
-			elsif ingredient.component.version == "fermentable_sugar" || ingredient.component.version == "fermentable_dme"
-				gravity_points += (((ingredient.component.ppg - 1) * 1000) * ingredient.amount)
+			if ingredient.component.version.include? "fermentable"
+				if ingredient.component.version == "fermentable_grain"
+					gravity_points += (                   (   (  (ingredient.component.ppg - 1) * 1000) * ingredient.amount) * (efficiency/100)  )
+				elsif ingredient.component.version == "fermentable_sugar" || ingredient.component.version == "fermentable_dme"
+					gravity_points += (((ingredient.component.ppg - 1) * 1000) * ingredient.amount)
+				end
 			end
 		end
+		gravity_points.to_i
 	end
 
 	def preboil_gravity
-		points = (total_gravity.to_f / (target_volume + BOIL_OFF))
+		points = (total_gravity / (target_volume + BOIL_OFF))
 		points/1000 + 1
 	end
 
@@ -63,14 +70,16 @@ class Recipe < ActiveRecord::Base
 		(points/1000 + 1)
 	end
 
-	def target_final_gravity
+	def projected_final_gravity
 		attn = 0
 		ingredients.each do |ingredient|
 			if ingredient.component.version == "yeast" && ingredient.component.attenuation > attn
-				attenuation = ingredient.component.att
+				attn = ingredient.component.attenuation
+				binding.pry
 			end
 		end
-		points = total_gravity * attn
+		fermented_gravity  =             (    (target_og - 1)   * 1000)         *       (attn.to_f/100)
+		points = (    (target_og - 1)   * 1000) - fermented_gravity
 		(points/1000) + 1
 	end
 

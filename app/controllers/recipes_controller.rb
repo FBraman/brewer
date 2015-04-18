@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.new(recipe_params)
+		binding.pry
 		if @recipe.save
 			flash[:notice] = "You have created a recipe"
 			redirect_to @recipe
@@ -46,7 +47,7 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, :mash_thickness)
+		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, :efficiency, :mash_thickness)
 	end
 
 

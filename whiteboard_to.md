@@ -61,14 +61,20 @@ lets get some devise user sign in action going so that recipes can be properly a
 	4/17, todo, 
 		-rebuild components table to include yeast attributes, (done)
 		-add yeast to db, components to calcuate target final gravity, (done) 
-		-subdivide fermentables, into further categories, sugars, mashed_grain, (done, feremntable-grain, fermentable-dme, fermentable-sugar)
+		-subdivide fermentables, into further categories, sugars, mashed_grain, (done, feremntable-grain, fermentable-dme, fermentable-sugar, yeast, hops)
 		-get separate dropdowns for ingredient types
-		-find place to put extraction efficiency, write gravity formulas so that fermentable_grains are calculated against an extraction efficency,
-				-efficiency as selectable for recipe on recipe show page, but has a default of 70 
-				-give mash thickness a default of 1.5
+		-find place to put extraction efficiency, (added to recipe create, need to add recipe edit, so it can be added after create if desired, or changed) 
+		-write gravity formulas so that fermentable_grains are calculated against an extraction efficency
+				-efficiency as selectable for recipe on recipe show page, but has a default of 70 (done)
+				-give mash thickness a default of 1.5 (done)
 		-add show final grav calc only if yeast is among selected ingredients, 
 					-going to put it on the recipe create form, maybe eventually be a system, so a user could have many systems, but for now, field with default on recipe create page
 		-develop list of steps for 3 vessel process, and BIAB, create tables, steps and process, process would be a join table with recipe_id, step_id and proecess notes
 		-also need a dictionary, brewing terms mash sparge, etc, and ingredients, malt, hops, bittering, non fermentable sugar
+
+		4/18, todo, 
+			-procced with calcs, og, target fg, preboil g, revisit water volume calcs, different for 3 vessel vs biab, 
+			-index view for ingredients, split amont ing types, each a link to a show to explore
+			-if basic functions attained today, consider working on process, 
 
 	

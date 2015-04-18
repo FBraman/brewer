@@ -5,37 +5,67 @@
         <%= @recipe.recipe_name %>
         Target volume:
         <%= @recipe.target_volume %> g
+
       </h2>
+        
     </div>
 
     <div>
+      <div>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <ul>
+            <% if ingredient.component.version == "yeast" %>
+            <li><%= ingredient.amount  %>  vials/smack pack(s) <%= ingredient.component.name %>  
+                <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+            </li>
+          </ul>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
     	<% @recipe.ingredients.each do |ingredient| %>
     		<ul>
-    			<li><%= ingredient.amount  %>  lbs.
-            <%= ingredient.component.name %>  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %></li>
+          <% if ingredient.component.version.include? "fermentable" %>
+    			<li><%= ingredient.amount  %>  lbs. <%= ingredient.component.name %>  
+              <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+          </li>
     		</ul>
+        <% end %>
     	<% end %>
-
   	</div>
+  </div>
+
+    <div>
       Strike water: 
       <%= @recipe.strike_water %>
     </div>
 
-    </div>
+    <div>
       Sparge water: 
       <%= @recipe.sparge_water %>
     </div>
 
+    <div>
+      Total water: 
+      <%= @recipe.total_water %>
     </div>
+
+    <div>
       Preboil gravity: 
       <%= @recipe.preboil_gravity %>
     </div>
 
-    </div>
-      Target original gravity: 
+    <div>
+      projected original gravity: 
       <%= @recipe.target_og %>
     </div>
 
+    <div>
+      projected final gravity:
+      <%= @recipe.projected_final_gravity %>
+    </div>
+
+    
 
 
     <% if @recipe.owner?(current_user) %>
