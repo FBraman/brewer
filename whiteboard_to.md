@@ -76,8 +76,13 @@ lets get some devise user sign in action going so that recipes can be properly a
 			-procced with calcs, og, target fg, preboil g, revisit water volume calcs, different for 3 vessel vs biab, (got basic calcs done, water could be improved, but adequate for proceeding)
 			-further research on createing select boxes would be nice, but reading docs has not helped so far
 			-index view for ingredients, split amont ing types, each a link to a show to explore
-				-already have the index for components, just add links and create template
+				-already have the index for components, just add links and create templated
 			-if basic functions attained today, consider working on process, 
+
+		4/19, 
+			-got syntax for separating table into separate dropdowns
+			-separate into each, hops, fermentables, yeast, 
+			-add column to ingredients table for boil time, most important now for hop IBU calculation, but long term, if I get srm up and running, it will be important for that as well for kettle darkening, 
 
 
 	

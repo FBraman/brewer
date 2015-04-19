@@ -2,7 +2,7 @@
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <div>
-        <%= pluralize(@recipe.errors.count, "error") %> prohibited this car from being saved:
+        <%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:
       </div>    <ul>
         <% @recipe.errors.full_messages.each do |message| %>
           <li><%= message %></li>

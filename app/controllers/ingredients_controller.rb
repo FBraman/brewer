@@ -19,6 +19,24 @@ class IngredientsController <  ApplicationController
     end
   end
 
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+    @recipe = @ingredient.recipe
+    @ingredient = @recipe.ingredients.find(params[:id])
+    
+  end
+
+   def update
+    @ingredient = Ingredient.update(params[:id], ingredient_params)
+    if @ingredient.save
+      flash[:notice] = "Ingredient updated."
+      redirect_to @ingredient.recipe
+    else
+      flash[:notice] = "Update failed"
+      render :new
+    end
+  end
+
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = Ingredient.find(params[:id])
@@ -28,7 +46,7 @@ class IngredientsController <  ApplicationController
 
   def ingredient_params
   	params.require(:ingredient).permit(:recipe_id, 
-      :component_id, :version, :amount)
+      :component_id, :version, :amount, :boil_time)
   end
 
 end

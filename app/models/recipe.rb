@@ -62,12 +62,14 @@ class Recipe < ActiveRecord::Base
 
 	def preboil_gravity
 		points = (total_gravity / (target_volume + BOIL_OFF))
-		points/1000 + 1
+		pg = points/1000 + 1
+		sprintf("%.3f", pg)
 	end
 
 	def target_og
 		points = total_gravity / target_volume
-		(points/1000 + 1)
+		to = (points/1000 + 1)
+		sprintf("%.3f", to)
 	end
 
 	def projected_final_gravity
@@ -77,15 +79,41 @@ class Recipe < ActiveRecord::Base
 				attn = ingredient.component.attenuation
 			end
 		end
-		fermented_gravity  =             (    (target_og - 1)   * 1000)         *       (attn.to_f/100)
-		points = (    (target_og - 1)   * 1000) - fermented_gravity
-		(points/1000) + 1
+		fermented_gravity  =             (    (target_og.to_f - 1)   * 1000)         *       (attn.to_f/100)
+		points = (    (target_og.to_f - 1)   * 1000) - fermented_gravity
+		pfg = ((points/1000) + 1)
+		sprintf("%.3f", pfg)
 	end
 
+	# def alpha_acids
+	# 	ingredient.component.aa
+	# end
 
+	# def boil_time
+	# 	ingredient.boil_time
+	# end
 
+	# def weight_oz
+	# 	ingredient.amount
+	# end
 
-
+	def ibu #######tinseth###############
+	  original_gravity = ((total_gravity / target_volume) / 1000) + 1 
+		ibus = 0
+		ingredients.each do |ingredient|
+			if ingredient.component.version == "hops"
+				weight_oz = ingredient.amount
+				boil_time = ingredient.boil_time
+				alpha_acids = ingredient.component.aa
+				if weight_oz == nil || boil_time == nil || alpha_acids == nil
+					ibus = 0
+				else
+					ibus += (1.65 * (0.000125 ** (original_gravity - 1))) * (( 1 - (2.71** (-0.04 * boil_time))) / 4.15 ) * (((alpha_acids/100) * weight_oz * 7490) / target_volume )
+				end
+			end
+		end
+		ibus.to_i
+	end
 
 	def owner?(current_user)
     user == current_user
