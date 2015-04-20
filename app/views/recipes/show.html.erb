@@ -17,8 +17,10 @@
             <% if ingredient.component.version == "yeast" %>
             <li><%= ingredient.amount  %>  vials/smack pack(s) 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-                <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+                <% if @recipe.owner?(current_user) %>
+                  <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
+                  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+                <% end %>
             </li>
           </ul>
           <% end %>
@@ -30,8 +32,10 @@
           <% if ingredient.component.version.include? "fermentable" %>
     			<li><%= ingredient.amount  %>  lbs. 
               <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-              <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+              <% if @recipe.owner?(current_user) %>
+                <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
+                <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+              <% end %>
           </li>
     		</ul>
         <% end %>
@@ -44,9 +48,11 @@
           <% if ingredient.component.version.include? "hops" %>
           <li><%= ingredient.amount  %>  OZs. 
               <%= link_to ingredient.component.name, component_path(ingredient.component) %> 
-              <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-              <%= ingredient.component.aa %> %AA  
-              <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+               <% if @recipe.owner?(current_user) %>
+                  <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
+                  <%= ingredient.component.aa %> %AA  
+                  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+               <% end %>
           </li>
         </ul>
         <% end %>

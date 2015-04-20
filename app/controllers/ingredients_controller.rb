@@ -39,9 +39,15 @@ class IngredientsController <  ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
-    redirect_to recipe_path(@recipe)
+    binding.pry
+    if @recipe.owner?(current_user)
+      @recipe = Recipe.find(params[:recipe_id])
+      @ingredient = Ingredient.find(params[:id])
+      @ingredient.destroy
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:notice] = "You cannot change recipes you did not create"
+    end
   end
 
   def ingredient_params

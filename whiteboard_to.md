@@ -48,7 +48,7 @@ lets get some devise user sign in action going so that recipes can be properly a
 		boiloff variable with default of 1.g/hour
 		-right now, focus on getting values into db in order to manipulate them
 	-got csv into db with appropriate info for each ingredient, now how to separate logic of different ingredient verisons, need to pass that as an attribute for an ingredient object
-		-can fit formula to ingredient.component.verison, but I will need to further subdivide the components list to fit other formulas, like for instanc, I won't need to calculate the strike water for DME, though it is a fermentable
+		-can fit formula to ingredient.component.version, but I will need to further subdivide the components list to fit other formulas, like for instanc, I won't need to calculate the strike water for DME, though it is a fermentable
 		
 	4/16, things to do, 
 		-merge current local master with github(done)
@@ -81,8 +81,24 @@ lets get some devise user sign in action going so that recipes can be properly a
 
 		4/19, 
 			-got syntax for separating table into separate dropdowns
+			-added links for editing ingredient (ugly, need to revisit)
+			-added links for viewing ingredient information (also ugly, need to revisit)
 			-separate into each, hops, fermentables, yeast, 
-			-add column to ingredients table for boil time, most important now for hop IBU calculation, but long term, if I get srm up and running, it will be important for that as well for kettle darkening, 
+			-added column to ingredients table for boil time, most important now for hop IBU calculation, but long term, if I get srm up and running, it will be important for that as well for kettle darkening, 
+			-next steps, steps and process join table, for note taking
+			-add strike water temp calculations
+				-brew dictionary
+				-brew how to (essentially the 'description' column for steps)
+				-MAKE IT PRETTY!
+				https://hide.me/en/proxy in browser vpn for researching beer at launch
+
+		4/20
+			-todo,  
+			-bug, non owner can remove ingredients from recipe, restrict access in view and controller, 
+				-try using the recipe model method owner? in controller..., in destroy, check owner of ingredient, if that fails, maybe create method on ingredient model and try again, check that the method works in the view to prove efficacy
+					-owner? method works as restriction in controller, but throws no template error for false, perhaps good enough, only malicious would find hidden link on view and its ok if they get errror, though better if they get 404, revisit for 404 redirect...
+					-restriced on view with owner?, restricted on controller with owner, but need redirect rather than error
+					
 
 
 	
