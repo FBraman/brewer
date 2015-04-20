@@ -46,11 +46,11 @@
       <% @recipe.ingredients.each do |ingredient| %>
         <ul>
           <% if ingredient.component.version.include? "hops" %>
-          <li><%= ingredient.amount  %>  OZs. 
+          <li><%= ingredient.amount  %>  OZs.
+              <%= ingredient.component.aa %> %AA  
               <%= link_to ingredient.component.name, component_path(ingredient.component) %> 
                <% if @recipe.owner?(current_user) %>
                   <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-                  <%= ingredient.component.aa %> %AA  
                   <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
                <% end %>
           </li>

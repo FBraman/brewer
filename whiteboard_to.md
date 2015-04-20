@@ -98,7 +98,9 @@ lets get some devise user sign in action going so that recipes can be properly a
 				-try using the recipe model method owner? in controller..., in destroy, check owner of ingredient, if that fails, maybe create method on ingredient model and try again, check that the method works in the view to prove efficacy
 					-owner? method works as restriction in controller, but throws no template error for false, perhaps good enough, only malicious would find hidden link on view and its ok if they get errror, though better if they get 404, revisit for 404 redirect...
 					-restriced on view with owner?, restricted on controller with owner, but need redirect rather than error
-					
+			-add dme to fermentables table and calcuation, also need volume addition for dme
+			-add lme to fermentables, 
+			-strike water temperature calculator
 
 
 	
