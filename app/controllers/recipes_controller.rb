@@ -25,6 +25,21 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def edit
+    @recipe = current_user.recipes.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.update(params[:id], recipe_params)
+    if @recipe.save
+      flash[:notice] = "Recipe updated successfully!"
+      redirect_to @recipe
+    else
+      flash[:notice] = "Update failed"
+      render :new
+    end
+  end
+
 	def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
@@ -47,7 +62,7 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, :efficiency, :mash_thickness)
+		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, :efficiency, :mash_thickness, :mash_temp, :grain_temp)
 	end
 
 

@@ -93,13 +93,31 @@
     <div>
       IBUs:
       <%= @recipe.ibu %>
+      <% if @recipe.ibu > 110 %>
+        Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU, however, numbers higher than that will probably effect taste in ways other than bitterness.
+      <% end %>
     </div>
 
-    <% if @recipe.owner?(current_user) %>
     <div>
-      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
+      <% if @recipe.mash_temp %>
+        Mash temp:
+        <%= @recipe.mash_temp %>
+        Strike water temp:
+        <%= @recipe.strike_water_temp %>
+      <% end %>
     </div>
-    <% end %>
+
+    <div>
+      <% if @recipe.owner?(current_user) %>
+      <%= link_to "Edit Recipe", edit_recipe_path %>
+      <% end %>
+    </div>
+    
+    <div>
+      <% if @recipe.owner?(current_user) %>
+      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
+      <% end %>
+    </div>
 
       <div>
       <%= link_to "Learn more about Ingredients", components_path %>
@@ -110,3 +128,5 @@
 <% if @recipe.owner?(current_user) %>
   <%= render "/ingredients/form" %>
 <% end %>
+
+

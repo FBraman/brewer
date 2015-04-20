@@ -100,7 +100,7 @@ lets get some devise user sign in action going so that recipes can be properly a
 					-restriced on view with owner?, restricted on controller with owner, but need redirect rather than error
 			-add dme to fermentables table and calcuation, also need volume addition for dme
 			-add lme to fermentables, 
-			-strike water temperature calculator
+			-strike water temperature calculator, need mash temp as part of recipe, column in recipe for mash temp_ and grain temp (long term, best as a calcuation outside of recipe, as with js or some such)
 
 
 	

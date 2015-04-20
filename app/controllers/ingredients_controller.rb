@@ -39,7 +39,6 @@ class IngredientsController <  ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    binding.pry
     if @recipe.owner?(current_user)
       @recipe = Recipe.find(params[:recipe_id])
       @ingredient = Ingredient.find(params[:id])
