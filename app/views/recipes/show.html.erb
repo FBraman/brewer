@@ -1,80 +1,71 @@
-
-		<div>
-      <h2>
+    <div class="row" id="recipe_title">
         Recipe:
         <%= @recipe.recipe_name %>
         Target volume:
-        <%= @recipe.target_volume %> g
-
-      </h2>
-        
+        <%= @recipe.target_volume %> g        
     </div>
 
-    <div>
-      <div>
-        <% @recipe.ingredients.each do |ingredient| %>
-          <ul>
-            <% if ingredient.component.version == "yeast" %>
-            <li><%= ingredient.amount  %>  vials/smack pack(s) 
-                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <% if @recipe.owner?(current_user) %>
-                  <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-                  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
-                <% end %>
-            </li>
-          </ul>
-          <% end %>
-        <% end %>
-      </div>
-      <div>
-    	<% @recipe.ingredients.each do |ingredient| %>
-    		<ul>
-          <% if ingredient.component.version.include? "fermentable" %>
-    			<li><%= ingredient.amount  %>  lbs. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <% if @recipe.owner?(current_user) %>
-                <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-                <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
-              <% end %>
-          </li>
-    		</ul>
-        <% end %>
-    	<% end %>
-  	</div>
+  <div class="row" id="recipe_links"> 
+    <div class="small-2 large-4 columns">
+      <%= link_to "Ingredients list", components_path %>
+    </div>
 
-    <div>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <ul>
-          <% if ingredient.component.version.include? "hops" %>
-          <li><%= ingredient.amount  %>  OZs.
-              <%= ingredient.component.aa %> %AA  
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %> 
-               <% if @recipe.owner?(current_user) %>
-                  <%= link_to "edit", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>
-                  <%= link_to "-", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
-               <% end %>
-          </li>
-        </ul>
-        <% end %>
+    <div class="small-2 large-4 columns">
+      <% if @recipe.owner?(current_user) %>
+      <%= link_to "Edit Recipe", edit_recipe_path %>
+      <% end %>
+    </div>
+    
+    <div class="small-2 large-4 columns">
+      <% if @recipe.owner?(current_user) %>
+      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
       <% end %>
     </div>
   </div>
 
-    <div>
-      Strike water: 
-      <%= @recipe.strike_water %>
-    </div>
 
-    <div>
-      Sparge water: 
-      <%= @recipe.sparge_water %>
-    </div>
+  <div class="row" id="recipe_ingredients">
+    <div class="small-3 large-5 columns">
+      Yeast
+      <% @recipe.ingredients.each do |ingredient| %>
+        <ul>
+          <% if ingredient.component.version.include? "yeast" %>
+          <div><li><%= ingredient.amount  %>  pkg. 
+              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              <% if @recipe.owner?(current_user) %>
+            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
+              <% end %>
+            </li></div>
+            </ul>
+          <% end %>
+          <% if ingredient.component.version.include? "fermentable" %>
+          <div><li><%= ingredient.amount  %>  lbs. 
+              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              <% if @recipe.owner?(current_user) %>
+            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
+              <% end %>
+            </li></div>
+            </ul>
+          <% end %>
+          <% if ingredient.component.version.include? "hops" %>
+          <div><li><%= ingredient.amount  %>  oz. 
+              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              <%= ingredient.component.aa %> %AA 
+              <% if @recipe.owner?(current_user) %>
+            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
+              <% end %>
+            </li></div>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
 
-    <div>
-      Total water: 
-      <%= @recipe.total_water %>
-    </div>
 
+
+  <div class="small-3 large-5 columns">
     <div>
       Preboil gravity: 
       <%= @recipe.preboil_gravity %>
@@ -91,6 +82,21 @@
     </div>
 
     <div>
+      Strike water: 
+      <%= @recipe.strike_water %>
+    </div>
+
+    <div>
+      Sparge water: 
+      <%= @recipe.sparge_water %>
+    </div>
+
+    <div>
+      Total water:
+      <%= @recipe.total_water %>
+    </div>
+
+     <div>
       IBUs:
       <%= @recipe.ibu %>
       <% if @recipe.ibu > 110 %>
@@ -106,27 +112,14 @@
         <%= @recipe.strike_water_temp %>
       <% end %>
     </div>
-
-    <div>
-      <% if @recipe.owner?(current_user) %>
-      <%= link_to "Edit Recipe", edit_recipe_path %>
-      <% end %>
-    </div>
-    
-    <div>
-      <% if @recipe.owner?(current_user) %>
-      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
-      <% end %>
-    </div>
-
-      <div>
-      <%= link_to "Learn more about Ingredients", components_path %>
-    </div>
-    
+  </div>
+</div>
 
 
-<% if @recipe.owner?(current_user) %>
-  <%= render "/ingredients/form" %>
-<% end %>
 
+  <div>
+    <% if @recipe.owner?(current_user) %>
+      <%= render "/ingredients/form" %>
+    <% end %>
+  </div>
 

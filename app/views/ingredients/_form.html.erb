@@ -1,11 +1,15 @@
-<div><%= form_for [@recipe, @ingredient] do |f| %>
+<div class="row">
+  <div class="small-2 large-4 column"><%= form_for [@recipe, @ingredient] do |f| %>
+
+    <div class="actions">
+      <%= f.submit "Add grain", class: "small radius button" %>
+    </div>
 
     <div class="field">
       <%= f.select :component_id, options_for_select(Component.where(version: "fermentable_grain").map{|s|[s.name, s.id]}) %>
     </div>
 
-    <div class="field">
-
+    <div>
     	<%= f.label :amount %>
     	<%= f.number_field :amount, class: "text_field", step: 0.01 %>
     </div>
@@ -14,22 +18,24 @@
     	<%= f.hidden_field :recipe_id, value: @recipe.id %>
     </div>
 
-  <div class="actions">
-    <%= f.submit "Add grain", class: "small radius button" %>
-  </div>
   <% end %>
 </div>
 
-<div><%= form_for [@recipe, @ingredient] do |f| %>
+<div class="small-2 large-4 column"><%= form_for [@recipe, @ingredient] do |f| %>
+
+  <div class="actions">
+    <%= f.submit "Add hops", class: "small radius button" %>
+  </div>
 
   <div class="field">
     <%= f.select :component_id, options_for_select(Component.where(version: "hops").map{|s|[s.name, s.id]}) %>
   </div>
 
-    <%= f.label :amount %>
+    <div>
+      <%= f.label :amount %>
       <%= f.number_field :amount, class: "text_field", step: 0.01 %>
     </div>
-
+    <div>
      <%= f.label :boil_time %>
       <%= f.number_field :boil_time, class: "text_field", step: 1 %>
     </div>
@@ -38,20 +44,20 @@
       <%= f.hidden_field :recipe_id, value: @recipe.id %>
     </div>
 
-  <div class="actions">
-    <%= f.submit "Add hops", class: "small radius button" %>
-  </div>
-
   <% end %>
 </div>
 
-<div><%= form_for [@recipe, @ingredient] do |f| %>
+<div class="small-2 large-4 column"><%= form_for [@recipe, @ingredient] do |f| %>
+
+  <div class="actions">
+    <%= f.submit "Add yeast", class: "small radius button" %>
+  </div>
 
   <div class="field">
     <%= f.select :component_id, options_for_select(Component.where(version: "yeast").map{|s|[s.name, s.id]}) %>
   </div>
 
-  <div>
+  <div class="field">
     <%= f.label :amount %>
     <%= f.number_field :amount, class: "text_field", step: 1 %>
   </div>
@@ -60,9 +66,9 @@
     <%= f.hidden_field :recipe_id, value: @recipe.id %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Choose yeast", class: "small radius button" %>
-  </div>
+  
 
   <% end %>
 </div>
+</div>
+

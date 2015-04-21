@@ -43,7 +43,6 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def strike_water_temp
-		binding.pry
 		(0.2/mash_thickness) * (mash_temp - grain_temp) + mash_temp
 	end
 

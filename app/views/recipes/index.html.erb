@@ -1,11 +1,14 @@
-<h1>all recipes</h1>
+<div class="row">
+	<div class="small-2 large-5 columns">all recipes</div>
+	<div class="small-2 large-5 columns"><%= link_to "New Recipe", new_recipe_path %></div>
+</div>
 
-<div><%= link_to "New Recipe", new_recipe_path %></div>
-
-		<div>
-			<ol>
-				<% @recipes.each do |recipe| %>
-					<div><li><%= link_to recipe.recipe_name, recipe %></li></div>
-				<% end %>
-			</ol> 
+		<div class="row">
+			<div class="small-6 large-10">
+				<ul>
+					<% @recipes.each do |recipe| %>
+						<div><li><%= link_to recipe.recipe_name, recipe %></li></div>
+					<% end %>
+				</ul> 
+			</div>
 		</div>
