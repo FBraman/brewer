@@ -105,7 +105,19 @@
         <%= @recipe.strike_water_temp %>
       <% end %>
     </div>
+    
+    <div>
+      <% @recipe.process_steps.each do |process_step| %>
+        <%= process_step.step.step_name %>
+        <%= process_step.step_notes %>
+      <% end %>
+    </div>
+
   </div>
+
+ 
+
+
   <div>
     <% if @recipe.owner?(current_user) %>
       <%= render "/process_steps/form" %>

@@ -2,7 +2,7 @@ class ProcessStepsController < ApplicationController
 
 	def new
 		@recipe = Recipe.find(params[:id])
-		@process_step = Process_step.new
+		@process_step = ProcessStep.new
 	end
 
 	def show

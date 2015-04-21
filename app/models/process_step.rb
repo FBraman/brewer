@@ -1,4 +1,4 @@
-class Process_step < ActiveRecord::Base
+class ProcessStep < ActiveRecord::Base
 	belongs_to :recipe
 	belongs_to :step
 	
