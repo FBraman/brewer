@@ -12,11 +12,11 @@ class RecipesController < ApplicationController
 	def show
 		@recipe = Recipe.find(params[:id])
 		@ingredient = Ingredient.new
+		@process_step = Process_step.new
 	end
 
 	def create
 		@recipe = Recipe.new(recipe_params)
-		binding.pry
 		if @recipe.save
 			flash[:notice] = "You have created a recipe"
 			redirect_to @recipe

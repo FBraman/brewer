@@ -1,0 +1,17 @@
+<div><%= form_for [@recipe, @process_step] do |f| %>
+
+    <div class="actions">
+      <%= f.submit class: "small radius button" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :step_id %><br />
+      <%= f.select :step_id, Step.all.collect{|s|[s.step_name, s.id]} %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+    </div>
+
+  <% end %>
+</div>

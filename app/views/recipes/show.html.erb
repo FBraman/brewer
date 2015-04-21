@@ -106,6 +106,13 @@
       <% end %>
     </div>
   </div>
+  <div>
+    <% if @recipe.owner?(current_user) %>
+      <%= render "/process_steps/form" %>
+    <% end %> 
+  </div>  
+  
+
 </div>
 
 
