@@ -109,8 +109,10 @@ lets get some devise user sign in action going so that recipes can be properly a
 				-steps table, 
 					-process join table, has step_id, recipe_id and notes columns, 
 			-nothing left to do but style style style (ok, not really, but I do need to do it)
-				-background image, too much white space, font choice, color scheme, 
-			-like to haves, reviews, parallax scroll w/recipe on left and reviews on right, 
+				-background image, too much white space, font choice, color scheme, smaller font (can be %?) for edit and remove ingredient links),
+			-like to haves, reviews, parallax scroll w/recipe on left and reviews on right,
+			image/link on bottom center of page, visually anchor, recipe summary, ing, metrics with simple text for parallax scroll through reviews
+			 
 
 			-
 

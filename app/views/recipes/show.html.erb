@@ -15,17 +15,11 @@
       <%= link_to "Edit Recipe", edit_recipe_path %>
       <% end %>
     </div>
-    
-    <div class="small-2 large-4 columns">
-      <% if @recipe.owner?(current_user) %>
-      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
-      <% end %>
-    </div>
   </div>
 
 
   <div class="row" id="recipe_ingredients">
-    <div class="small-3 large-5 columns">
+    <div class="small-6 large-6 columns">
       <% @recipe.ingredients.each do |ingredient| %>
         <ul>
           <% if ingredient.component.version.include? "yeast" %>
@@ -64,7 +58,7 @@
 
 
 
-  <div class="small-3 large-5 columns">
+  <div class="small-6 large-6 columns">
     <div>
       Preboil gravity: 
       <%= @recipe.preboil_gravity %>
@@ -122,3 +116,8 @@
     <% end %>
   </div>
 
+  <div class="small-2 large-4 columns">
+    <% if @recipe.owner?(current_user) %>
+      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
+    <% end %>
+  </div>
