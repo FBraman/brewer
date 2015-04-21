@@ -26,7 +26,6 @@
 
   <div class="row" id="recipe_ingredients">
     <div class="small-3 large-5 columns">
-      Yeast
       <% @recipe.ingredients.each do |ingredient| %>
         <ul>
           <% if ingredient.component.version.include? "yeast" %>

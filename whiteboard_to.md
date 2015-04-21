@@ -94,7 +94,7 @@ lets get some devise user sign in action going so that recipes can be properly a
 
 		4/20
 			-todo,  
-			-bug, non owner can remove ingredients from recipe, restrict access in view and controller, 
+			-bug, non owner can remove ingredients from recipe, restrict access in view and controller, (fixed, contoller thows error, and link hidden from non owner)
 				-try using the recipe model method owner? in controller..., in destroy, check owner of ingredient, if that fails, maybe create method on ingredient model and try again, check that the method works in the view to prove efficacy
 					-owner? method works as restriction in controller, but throws no template error for false, perhaps good enough, only malicious would find hidden link on view and its ok if they get errror, though better if they get 404, revisit for 404 redirect...
 					-restriced on view with owner?, restricted on controller with owner, but need redirect rather than error
@@ -102,5 +102,16 @@ lets get some devise user sign in action going so that recipes can be properly a
 			-add lme to fermentables, 
 			-strike water temperature calculator, need mash temp as part of recipe, column in recipe for mash temp_ and grain temp (long term, best as a calcuation outside of recipe, as with js or some such)
 
+		4/21
+			-round off calc for strike water temp (done)
+			-grist percentages calculation and display
+			-notes, steps, process
+				-steps table, 
+					-process join table, has step_id, recipe_id and notes columns, 
+			-nothing left to do but style style style (ok, not really, but I do need to do it)
+				-background image, too much white space, font choice, color scheme, 
+			-like to haves, reviews, parallax scroll w/recipe on left and reviews on right, 
+
+			-
 
 	

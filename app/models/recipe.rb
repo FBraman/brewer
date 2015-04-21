@@ -16,7 +16,11 @@ class Recipe < ActiveRecord::Base
 		grain = 0
 		ingredients.each do |ingredient|
 			if ingredient.component.version == "fermentable_grain"
-				grain += ingredient.amount
+				if ingredient.amount == nil
+					grain += 0
+				else
+					grain += ingredient.amount
+				end
 			end
 		end
 		grain
@@ -43,7 +47,8 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def strike_water_temp
-		(0.2/mash_thickness) * (mash_temp - grain_temp) + mash_temp
+		swt = (0.2/mash_thickness) * (mash_temp - grain_temp) + mash_temp
+		sprintf("%.2f", swt)
 	end
 
 	def yeast_attenuation
@@ -54,7 +59,9 @@ class Recipe < ActiveRecord::Base
 		gravity_points = 0
 		ingredients.each do |ingredient|
 			if ingredient.component.version.include? "fermentable"
-				if ingredient.component.version == "fermentable_grain"
+				if ingredient.amount == nil
+					gravity_points += 0
+				elsif ingredient.component.version == "fermentable_grain"
 					gravity_points += (                   (   (  (ingredient.component.ppg - 1) * 1000) * ingredient.amount) * (efficiency/100)  )
 				elsif ingredient.component.version == "fermentable_sugar" || ingredient.component.version == "fermentable_dme"
 					gravity_points += (((ingredient.component.ppg - 1) * 1000) * ingredient.amount)
