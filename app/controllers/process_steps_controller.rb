@@ -16,7 +16,7 @@ class ProcessStepsController < ApplicationController
 
 	def create
 		@recipe = Recipe.find(params[:recipe_id])
-    @process_step = Process_step.create(process_step_params)
+    @process_step = ProcessStep.create(process_step_params)
     if @process_step.save
       redirect_to recipe_path(@process_step.recipe)
     else

@@ -15,3 +15,17 @@
  *= require foundation_and_overrides
 
  */
+
+
+body {
+	background-color: #E3B97D;
+	font-family: Cousine, sans-serif;
+}
+
+.top-bar {
+	background-color: #014181;
+}
+
+#edit-remove-ingredient {
+	font-size: 10px;
+}

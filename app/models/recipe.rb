@@ -59,16 +59,20 @@ class Recipe < ActiveRecord::Base
 
 	def total_gravity
 		gravity_points = 0
-		ingredients.each do |ingredient|
-			if ingredient.component.version.include? "fermentable"
-				if ingredient.amount == nil
-					gravity_points += 0
-				elsif ingredient.component.version == "fermentable_grain"
-					gravity_points += (                   (   (  (ingredient.component.ppg - 1) * 1000) * ingredient.amount) * (efficiency/100)  )
-				elsif ingredient.component.version == "fermentable_sugar" || ingredient.component.version == "fermentable_dme"
-					gravity_points += (((ingredient.component.ppg - 1) * 1000) * ingredient.amount)
+		if ingredients == nil
+			gravity_points = 0
+		else
+			ingredients.each do |ingredient|
+				if ingredient.component.version.include? "fermentable"
+					if ingredient.amount == nil
+						gravity_points += 0
+					elsif ingredient.component.version == "fermentable_grain"
+						gravity_points += (                   (   (  (ingredient.component.ppg - 1) * 1000) * ingredient.amount) * (efficiency/100)  )
+					elsif ingredient.component.version == "fermentable_sugar" || ingredient.component.version == "fermentable_dme"
+						gravity_points += (((ingredient.component.ppg - 1) * 1000) * ingredient.amount)
+					end
 				end
-			end
+			end	
 		end
 		gravity_points.to_i
 	end

@@ -106,14 +106,18 @@ lets get some devise user sign in action going so that recipes can be properly a
 			-round off calc for strike water temp (done)
 			-grist percentages calculation and display
 			-notes, steps, process
-				-steps table, 
+				-steps table, (done)
 					-process join table, has step_id, recipe_id and notes columns, render as with an ingredient, where they are from a drop down, allows for some customization through selection and editing...
 			-nothing left to do but style style style (ok, not really, but I do need to do it)
 				-background image, too much white space, font choice, color scheme, smaller font (can be %?) for edit and remove ingredient links),
 			-like to haves, reviews, parallax scroll w/recipe on left and reviews on right,
 			image/link on bottom center of page, visually anchor, recipe summary, ing, metrics with simple text for parallax scroll through reviews, add/edit components
+			-questions, how to get ingredient edit to render with preset from drop down andd only the relevant dropdown? possible? or do I need to reconceive the whole thing...
 			 
 
-			-
+		4/22 - style, label parts, have a show page for notes,
+				-move ingredients link (top bar), step link (top bar),
+				-move edit link to bottom of page
+				-create steps index page
 
 	

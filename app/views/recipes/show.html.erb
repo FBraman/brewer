@@ -1,142 +1,183 @@
     <div class="row" id="recipe_title">
+      <div class="small-12 larger-12 columns">
         Recipe:
         <%= @recipe.recipe_name %>
         Target volume:
-        <%= @recipe.target_volume %> g        
+        <%= @recipe.target_volume %> g
+      </div>        
     </div>
 
-  <div class="row" id="recipe_links"> 
-    <div class="small-2 large-4 columns">
-      <%= link_to "Ingredients list", components_path %>
+ 
+
+  <div class="row" id="ingredients_panel">
+    <div class="small-6 large-6 columns">
+      <div>
+        <div>
+          Yeast: 
+        </div>
+          <div class="panel">      
+          <% @recipe.ingredients.each do |ingredient| %>
+            <% if ingredient.component.version.include? "yeast" %>
+              <div>
+                <%= ingredient.amount  %>  pkg. 
+                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                <% if @recipe.owner?(current_user) %>
+                  <div id="edit-remove-ingredient">
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          Fermentable: 
+        </div>
+          <div class="panel">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <% if ingredient.component.version.include? "fermentable" %>
+              <div  class="panel">
+                <%= ingredient.amount  %>  lbs. 
+                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                <% if @recipe.owner?(current_user) %>
+                  <div id="edit-remove-ingredient">
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          Hops: 
+        </div>
+          <% @recipe.ingredients.each do |ingredient| %>
+            <% if ingredient.component.version.include? "hops" %>
+              <div  class="panel">
+                <%= ingredient.amount  %>  oz. 
+                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                <%= ingredient.component.aa %> %AA 
+                <% if @recipe.owner?(current_user) %>
+                  <div id="edit-remove-ingredient">
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    
+
+    <div class="small-6 large-6 columns" id="metrics_panel">
+      <div>
+        Metrics: 
+      </div>
+      <div class="panel">
+        <div>
+          Preboil gravity: 
+          <%= @recipe.preboil_gravity %>
+        </div>
+
+        <div>
+          projected original gravity: 
+          <%= @recipe.target_og %>
+        </div>
+
+        <div>
+          projected final gravity:
+          <%= @recipe.projected_final_gravity %>
+        </div>
+
+        <div>
+          Strike water: 
+          <%= @recipe.strike_water %>
+        </div>
+
+        <div>
+          Sparge water: 
+          <%= @recipe.sparge_water %>
+        </div>
+
+        <div>
+          Total water:
+          <%= @recipe.total_water %>
+        </div>
+
+         <div>
+          IBUs:
+          <%= @recipe.ibu %>
+          <% if @recipe.ibu > 110 %>
+            Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU, however, numbers higher than that will probably effect taste in ways other than bitterness.
+          <% end %>
+        </div>
+
+        <div>
+          <% if @recipe.mash_temp %>
+            Mash temp:
+            <%= @recipe.mash_temp %>
+            Strike water temp:
+            <%= @recipe.strike_water_temp %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel">
+        <div>
+          <% if @recipe.owner?(current_user) %>
+            <%= render "/process_steps/form" %>
+          <% end %> 
+        </div>  
+
+        <div>
+          <ul>
+            <% @recipe.process_steps.each do |process_step| %>
+              <li>
+                <%= process_step.step.step_name %>
+                <%= process_step.step_notes %>
+              </li>
+            <% end %>
+          </ul
+        </div>
+      </div>
     </div>
 
-    <div class="small-2 large-4 columns">
+
+    </div>
+</div>
+
+
+<div class="row" id="add_ingredient_panel">
+  <div class="small-12 large-12 columns">
+    <div class="panel">  
+      <% if @recipe.owner?(current_user) %>
+        <%= render "/ingredients/form" %>
+      <% end %>
+    </div>
+  </div>
+<div>
+
+  <div class="row">
+    <div class="small-6 large-6 columns">
       <% if @recipe.owner?(current_user) %>
       <%= link_to "Edit Recipe", edit_recipe_path %>
       <% end %>
     </div>
-  </div>
 
-
-  <div class="row" id="recipe_ingredients">
     <div class="small-6 large-6 columns">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <ul>
-          <% if ingredient.component.version.include? "yeast" %>
-          <div><li><%= ingredient.amount  %>  pkg. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <% if @recipe.owner?(current_user) %>
-            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
-              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
-              <% end %>
-            </li></div>
-            </ul>
-          <% end %>
-          <% if ingredient.component.version.include? "fermentable" %>
-          <div><li><%= ingredient.amount  %>  lbs. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <% if @recipe.owner?(current_user) %>
-            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
-              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
-              <% end %>
-            </li></div>
-            </ul>
-          <% end %>
-          <% if ingredient.component.version.include? "hops" %>
-          <div><li><%= ingredient.amount  %>  oz. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <%= ingredient.component.aa %> %AA 
-              <% if @recipe.owner?(current_user) %>
-            <div id="recipe_ingredient_links">(<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
-              <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)</div>
-              <% end %>
-            </li></div>
-            </ul>
-          <% end %>
-        <% end %>
-      </div>
-
-
-
-  <div class="small-6 large-6 columns">
-    <div>
-      Preboil gravity: 
-      <%= @recipe.preboil_gravity %>
-    </div>
-
-    <div>
-      projected original gravity: 
-      <%= @recipe.target_og %>
-    </div>
-
-    <div>
-      projected final gravity:
-      <%= @recipe.projected_final_gravity %>
-    </div>
-
-    <div>
-      Strike water: 
-      <%= @recipe.strike_water %>
-    </div>
-
-    <div>
-      Sparge water: 
-      <%= @recipe.sparge_water %>
-    </div>
-
-    <div>
-      Total water:
-      <%= @recipe.total_water %>
-    </div>
-
-     <div>
-      IBUs:
-      <%= @recipe.ibu %>
-      <% if @recipe.ibu > 110 %>
-        Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU, however, numbers higher than that will probably effect taste in ways other than bitterness.
+      <% if @recipe.owner?(current_user) %>
+        <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
       <% end %>
     </div>
-
-    <div>
-      <% if @recipe.mash_temp %>
-        Mash temp:
-        <%= @recipe.mash_temp %>
-        Strike water temp:
-        <%= @recipe.strike_water_temp %>
-      <% end %>
-    </div>
-    
-    <div>
-      <% @recipe.process_steps.each do |process_step| %>
-        <%= process_step.step.step_name %>
-        <%= process_step.step_notes %>
-      <% end %>
-    </div>
-
-  </div>
-
- 
-
-
   <div>
-    <% if @recipe.owner?(current_user) %>
-      <%= render "/process_steps/form" %>
-    <% end %> 
-  </div>  
+
+
   
-
-</div>
-
-
-
-  <div>
-    <% if @recipe.owner?(current_user) %>
-      <%= render "/ingredients/form" %>
-    <% end %>
-  </div>
-
-  <div class="small-2 large-4 columns">
-    <% if @recipe.owner?(current_user) %>
-      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
-    <% end %>
-  </div>
