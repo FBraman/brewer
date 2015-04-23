@@ -1,13 +1,37 @@
-<div>Account Info</div>
+
+<div class="row">
+	<div class="small-12 large-12 columns">
+		<div id="heading">
+			Account Info
+		</div>
+	</div>
+</div>
 
 
+<div class="row">
+	<div class="small-12 large-12 columns">
+		<div class="panel">
+			<div>
+				Username: <%= @user.username %>
+			</div>
 
-<div>Username: <%= @user.username %></div>
+			<div>
+				Email: <%= @user.email %>
+			</div>
 
-<div>Email: <%= @user.email %></div>
+			<div>
+				Account Create On: <%= @user.created_at %>
+			</div>
 
-<div>Account Create On: <%= @user.created_at %></div>
+			<div>
+				<%= link_to "Edit my Account", edit_registration_path(@user) %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<div><%= link_to "Edit my Account", edit_registration_path(@user) %></div>
-
-<div><%= link_to "Home", recipes_path %></div>
+<div class="row">
+	<div class="small-12 large-12" columns>
+		<%= link_to "Home", recipes_path %>
+	</div>
+</div>

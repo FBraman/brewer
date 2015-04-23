@@ -120,4 +120,19 @@ lets get some devise user sign in action going so that recipes can be properly a
 				-move edit link to bottom of page
 				-create steps index page
 
+		4/23- style, 
+				-remove extreneous ingredients links (now in bar)
+				-separate metrics into panels
+				-titles on blue, maybe white? or bold? try both.
+				-extreneous sign up link, remove
+				-link colors, can I manipulate as a whole? or individually? will give ids if the latter, keep a look out for blue on blue
+				-style or no style, get editing and destroy up for process steps
+				-edit for ingredients kind of rough, should have current ingredient as default, how to do with select box?
+				-round off sparge water
+				-my account show has no styling
+				-change Brew link to "recipies link"
+				-focus on manipulating information within panels and columns
+
+
+
 	

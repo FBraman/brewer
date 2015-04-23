@@ -1,15 +1,16 @@
-<div id="title">Ingredients</div>
 
-<div><%= link_to "Recipes", recipes_path %></div>
 
 		<div class="row">
-			<class="small-10 large-10">
-				<div class="panel">
-					<ul>
-						<% @components.each do |component| %>
-							<div><li><%= link_to component.name, component %></li></div>
-						<% end %>
-					</ul>
-				</div>	
-			</div> 
-		</div>
+			<div id="heading">
+				Ingredients
+			</div>
+				<div class="small-10 large-10">
+					<div class="panel">
+						<ul>
+							<% @components.each do |component| %>
+								<div id="index"><li><%= link_to component.name, component %></li></div>
+							<% end %>
+						</ul>
+					</div>	
+				</div> 
+			</div>

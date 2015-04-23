@@ -37,11 +37,12 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def sparge_water
-		target_volume - (strike_water - grain_absorption) + BOIL_OFF
+		sw = target_volume - (strike_water - grain_absorption) + BOIL_OFF
+		sprintf("%.2f", sw)
 	end
 
 	def total_water
-		strike_water + sparge_water
+		strike_water + sparge_water.to_f
 	end
 
 	def preboil_volume
@@ -121,15 +122,22 @@ class Recipe < ActiveRecord::Base
 	def ibu #######tinseth###############
 	  original_gravity = ((total_gravity / target_volume) / 1000) + 1 
 		ibus = 0
-		ingredients.each do |ingredient|
-			if ingredient.component.version == "hops"
-				weight_oz = ingredient.amount
-				boil_time = ingredient.boil_time
-				alpha_acids = ingredient.component.aa
-				if weight_oz == nil || boil_time == nil || alpha_acids == nil
-					ibus = 0
-				else
-					ibus += (1.65 * (0.000125 ** (original_gravity - 1))) * (( 1 - (2.71** (-0.04 * boil_time))) / 4.15 ) * (((alpha_acids/100) * weight_oz * 7490) / target_volume )
+		if ingredients == nil
+			ibus = 0
+		else
+			ingredients.each do |ingredient|
+				if ingredient.amount == 0
+					ibus += 0
+				elsif ingredient.component.version == "hops"
+					binding.pry
+					weight_oz = ingredient.amount
+					boil_time = ingredient.boil_time
+					alpha_acids = ingredient.component.aa
+					if weight_oz == nil || boil_time == nil || alpha_acids == nil
+						ibus = 0
+					else
+						ibus += (1.65 * (0.000125 ** (original_gravity - 1))) * (( 1 - (2.71** (-0.04 * boil_time))) / 4.15 ) * (((alpha_acids/100) * weight_oz * 7490) / target_volume )
+					end
 				end
 			end
 		end

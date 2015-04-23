@@ -12,7 +12,7 @@
   <div class="row" id="ingredients_panel">
     <div class="small-6 large-6 columns">
       <div>
-        <div>
+        <div id="recipe_panel_headings">
           Yeast: 
         </div>
           <div class="panel">      
@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <div>
+        <div id="recipe_panel_headings">
           Fermentable: 
         </div>
           <div class="panel">
@@ -56,7 +56,7 @@
       </div>
 
       <div>
-        <div>
+        <div id="recipe_panel_headings">
           Hops: 
         </div>
           <div class="panel">
@@ -65,7 +65,8 @@
               <div  class="panel">
                 <%= ingredient.amount  %>  oz. 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <%= ingredient.component.aa %> %AA 
+                <%= ingredient.component.aa %> %AA
+                <%= ingredient.boil_time %>.min boil 
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-remove-ingredient">
                     (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
@@ -83,22 +84,37 @@
     
 
     <div class="small-6 large-6 columns" id="metrics_panel">
-      <div>
-        Metrics: 
+      <div id="recipe_panel_headings">
+        Projected Metrics: 
       </div>
       <div class="panel">
+
+        <div>
+          Mash water to grain:
+          <%= @recipe.mash_thickness %>q/.lb
+        </div>
+
+        <div>
+          Efficiency:
+          <%= @recipe.efficiency %>
+        </div>
+
+        <div>
+          Grain temp:
+          <%= @recipe.grain_temp %>
+
         <div>
           Preboil gravity: 
           <%= @recipe.preboil_gravity %>
         </div>
 
         <div>
-          projected original gravity: 
+          Projected original gravity: 
           <%= @recipe.target_og %>
         </div>
 
         <div>
-          projected final gravity:
+          Projected final gravity:
           <%= @recipe.projected_final_gravity %>
         </div>
 
@@ -121,7 +137,7 @@
           IBUs:
           <%= @recipe.ibu %>
           <% if @recipe.ibu > 110 %>
-            Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU, however, numbers higher than that will probably effect taste in ways other than bitterness.
+            Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU. Numbers higher than 100 will effect taste in ways other than bitterness.
           <% end %>
         </div>
 
@@ -129,10 +145,19 @@
           <% if @recipe.mash_temp %>
             Mash temp:
             <%= @recipe.mash_temp %>
+          <% end %>
+        </div>
+
+        <div>
+          <% if @recipe.mash_temp %>  
             Strike water temp:
             <%= @recipe.strike_water_temp %>
           <% end %>
         </div>
+      </div>
+
+      <div id="recipe_panel_headings">
+        Brewing notes: 
       </div>
       <div class="panel">
         <div>
@@ -141,18 +166,20 @@
           <% end %> 
         </div>  
 
-        <div>
-          <ul>
-            <% @recipe.process_steps.each do |process_step| %>
+      <div>
+
+        <% @recipe.process_steps.each do |process_step| %>
+            <div class="panel">
               <li>
                 <%= process_step.step.step_name %>
                 <%= process_step.step_notes %>
               </li>
-            <% end %>
-          </ul
-        </div>
+            </div>
+          <% end %>
+
       </div>
     </div>
+  </div>
 
 
     </div>

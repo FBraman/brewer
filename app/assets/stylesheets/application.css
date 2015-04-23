@@ -22,18 +22,32 @@ body {
 	font-family: Cousine, sans-serif;
 }
 
+.panel {
+	font-size: 24px;
+	font-family: Cousine, sans-serif;
+	color: black;
+}
+
 #edit-remove-ingredient {
 	font-size: 10px;
 }
 
 #heading {
 	font-size: 36px;
+	font-family: Cousine, sans-serif;
+	color: #F2F2F2;
 }
 
-#recipe_index {
+#index {
 	font-size: 24px;
 }
 
 #test {
 	background-color: red;
+}
+
+#recipe_panel_headings {
+	font-size: 18px;
+	font-family: Cousine, sans-serif;
+	color: #F2F2F2;
 }

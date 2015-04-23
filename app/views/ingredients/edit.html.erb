@@ -1,5 +1,21 @@
-<div><h1>Edit ingredient</h1></div>
+<div class="row">
+	<div class="small-12 large-12 columns">
+		<div id="heading">
+			Edit ingredient
+		</div>
+	</div>
+</div>
 
-<%= render "form" %>
+<div class="row" id="add_ingredient_panel">
+  <div class="small-12 large-12 columns">
+    <div class="panel">  
+       <%= render "/ingredients/form" %>
+    </div>
+  </div>
+<div>
 
-<%= link_to "Recipe", recipe_path(@ingredient.recipe) %>
+<div class="row">
+	<div class="small-12 large-12 columns">
+		<%= link_to "Recipe", recipe_path(@ingredient.recipe) %>
+	</div>
+</div>
