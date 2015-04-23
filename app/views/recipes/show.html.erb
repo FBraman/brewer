@@ -1,4 +1,4 @@
-    <div class="row" id="recipe_title">
+    <div class="row" id="heading">
       <div class="small-12 larger-12 columns">
         Recipe:
         <%= @recipe.recipe_name %>
@@ -18,12 +18,12 @@
           <div class="panel">      
           <% @recipe.ingredients.each do |ingredient| %>
             <% if ingredient.component.version.include? "yeast" %>
-              <div>
+              <div class="panel">
                 <%= ingredient.amount  %>  pkg. 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-remove-ingredient">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
                 <% end %>
@@ -45,7 +45,7 @@
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-remove-ingredient">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
                 <% end %>
@@ -59,6 +59,7 @@
         <div>
           Hops: 
         </div>
+          <div class="panel">
           <% @recipe.ingredients.each do |ingredient| %>
             <% if ingredient.component.version.include? "hops" %>
               <div  class="panel">
@@ -67,14 +68,17 @@
                 <%= ingredient.component.aa %> %AA 
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-remove-ingredient">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>|
+                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
                 <% end %>
-              </div>
+              </div>  
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
+
     </div>
     
 

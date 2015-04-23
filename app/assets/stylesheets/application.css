@@ -18,14 +18,22 @@
 
 
 body {
-	background-color: #E3B97D;
-	font-family: Cousine, sans-serif;
-}
-
-.top-bar {
 	background-color: #014181;
+	font-family: Cousine, sans-serif;
 }
 
 #edit-remove-ingredient {
 	font-size: 10px;
+}
+
+#heading {
+	font-size: 36px;
+}
+
+#recipe_index {
+	font-size: 24px;
+}
+
+#test {
+	background-color: red;
 }

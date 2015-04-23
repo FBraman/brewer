@@ -1,14 +1,25 @@
 <div class="row">
-	<div class="small-2 large-5 columns">all recipes</div>
-	<div class="small-2 large-5 columns"><%= link_to "New Recipe", new_recipe_path %></div>
+	<div class="small-6 large-6 columns">
+		<div id="heading">
+			all recipes
+		</div>
+	</div>
+
+	<div class="small-6 large-6 columns">
+		<div id="heading">
+			<%= link_to "New Recipe", new_recipe_path %>
+		</div>
+	</div>
 </div>
 
-		<div class="row" id="recipe_index">
+		<div class="row">
 			<div class="small-10 large-10">
 				<div class="panel">
 					<ul>
 						<% @recipes.each do |recipe| %>
-							<div><li><%= link_to recipe.recipe_name, recipe %></li></div>
+							<div id="recipe_index">
+								<li><%= link_to recipe.recipe_name, recipe %></li>
+							</div>
 						<% end %>
 					</ul>
 				</div> 

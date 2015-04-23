@@ -91,9 +91,13 @@ class Recipe < ActiveRecord::Base
 
 	def projected_final_gravity
 		attn = 0
-		ingredients.each do |ingredient|
-			if ingredient.component.version == "yeast" && ingredient.component.attenuation > attn
-				attn = ingredient.component.attenuation
+		if ingredients == nil
+			att = 0
+		else
+			ingredients.each do |ingredient|
+				if ingredient.component.version == "yeast" && ingredient.component.attenuation > attn
+					attn = ingredient.component.attenuation
+				end
 			end
 		end
 		fermented_gravity  =             (    (target_og.to_f - 1)   * 1000)         *       (attn.to_f/100)
