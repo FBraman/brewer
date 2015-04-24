@@ -1,5 +1,5 @@
     <div class="row" id="heading">
-      <div class="small-12 larger-12 columns">
+      <div class="small-12 large-12 columns">
         Recipe:
         <%= @recipe.recipe_name %>
         Target volume:
@@ -22,7 +22,7 @@
                 <%= ingredient.amount  %>  pkg. 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
-                  <div id="edit-remove-ingredient">
+                  <div id="edit-delete-links">
                     (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
@@ -44,7 +44,7 @@
                 <%= ingredient.amount  %>  lbs. 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
-                  <div id="edit-remove-ingredient">
+                  <div id="edit-delete-links">
                     (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
@@ -68,7 +68,7 @@
                 <%= ingredient.component.aa %> %AA
                 <%= ingredient.boil_time %>.min boil 
                 <% if @recipe.owner?(current_user) %>
-                  <div id="edit-remove-ingredient">
+                  <div id="edit-delete-links">
                     (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
                     <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
                   </div>
@@ -173,6 +173,9 @@
               <li>
                 <%= process_step.step.step_name %>
                 <%= process_step.step_notes %>
+                <div id="edit-delete-links">
+                 (<%= link_to "edit note", edit_recipe_process_step_path(process_step.recipe, process_step) %> | <%= link_to "delete note", recipe_process_step_path(process_step.recipe, process_step), method: :edit %>)
+                </div>
               </li>
             </div>
           <% end %>
@@ -197,18 +200,18 @@
 <div>
 
   <div class="row">
-    <div class="small-6 large-6 columns">
+    <div class="small-6 large-6 columns small-centered larger-centered">
       <% if @recipe.owner?(current_user) %>
       <%= link_to "Edit Recipe", edit_recipe_path %>
       <% end %>
     </div>
 
-    <div class="small-6 large-6 columns">
+    <div class="small-6 large-6 small-centered larger-centered columns">
       <% if @recipe.owner?(current_user) %>
         <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
       <% end %>
     </div>
-  <div>
+  </div>
 
 
   

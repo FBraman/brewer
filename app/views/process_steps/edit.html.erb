@@ -1,0 +1,27 @@
+<div class="row" id="heading">
+	<div class="small-12 large-12 columns"> 
+			Edit note
+		</div>
+	</div>
+</div>
+
+
+<div row="row">
+	<div class="small-6 large-6 columns">
+		<div class="panel">
+			<%= render "form" %>
+		</div>
+	</div>
+
+
+	<div class="small-6 large-6 columns">
+		<div class="panel">
+			<% @recipe.process_steps.each do |pstep| %>
+				<%= pstep.step.step_name %>
+				<%= pstep.step_notes %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+

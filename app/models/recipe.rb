@@ -129,7 +129,6 @@ class Recipe < ActiveRecord::Base
 				if ingredient.amount == 0
 					ibus += 0
 				elsif ingredient.component.version == "hops"
-					binding.pry
 					weight_oz = ingredient.amount
 					boil_time = ingredient.boil_time
 					alpha_acids = ingredient.component.aa
