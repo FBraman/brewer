@@ -27,6 +27,8 @@ class RecipesController < ApplicationController
 
 	def edit
     @recipe = current_user.recipes.find(params[:id])
+    @ingredient = Ingredient.new
+    @process_step = ProcessStep.new
   end
 
   def update
@@ -62,7 +64,8 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, :efficiency, :mash_thickness, :mash_temp, :grain_temp)
+		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, 
+			:efficiency, :mash_thickness, :mash_temp, :grain_temp, :boil_length)
 	end
 
 

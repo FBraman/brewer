@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421173438) do
+ActiveRecord::Schema.define(version: 20150425201039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150421173438) do
     t.float   "efficiency"
     t.integer "mash_temp"
     t.float   "grain_temp"
+    t.integer "boil_length"
   end
 
   create_table "steps", force: :cascade do |t|
