@@ -29,7 +29,8 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def strike_water	
-		(grain_amount * mash_thickness) / 4.0
+		sw = (grain_amount * mash_thickness) / 4.0
+		sprintf("%.2f", sw)
 	end
 
 	def grain_absorption
@@ -37,12 +38,13 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def sparge_water
-		sw = target_volume - (strike_water - grain_absorption) + BOIL_OFF
+		sw = target_volume - (strike_water.to_f - grain_absorption) + BOIL_OFF
 		sprintf("%.2f", sw)
 	end
 
 	def total_water
-		strike_water + sparge_water.to_f
+		tw = strike_water.to_f + sparge_water.to_f
+		sprintf("%.2f", tw)
 	end
 
 	def preboil_volume
