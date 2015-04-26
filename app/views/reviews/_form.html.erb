@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="small-6 large-6 column">
+		<%= form_for [@recipe, @review] do |f| %>
+
+		<div class="actions">
+			<%= f.submit "Review", class: "small radius button" %>
+		</div>
+
+		<div class="field">
+			<%= f.hidden_field :recipe_id, value: @recipe.id %>
+		</div>
+
+		<div class="field">
+			<%= f.hidden_field :user_id, value: @user.id %>
+		</div>
+
+		<div class="field">
+			<%= f.label :review %>
+			<%= f.text_field :body %>
+		</div>
+
+		<% end %>
+	</div>
+</div>

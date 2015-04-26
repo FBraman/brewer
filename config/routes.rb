@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :ingredients
     resources :process_steps
+    resources :reviews
   end
 
   

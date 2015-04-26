@@ -4,6 +4,7 @@ class Recipe < ActiveRecord::Base
 	has_many :components, through: :ingredients
 	has_many :process_steps, dependent: :destroy
 	has_many :steps, through: :process_steps
+	has_many :reviews, dependent: :destroy
 	
 	validates :recipe_name, uniqueness: true, presence: true
 	validates :target_volume, presence: true

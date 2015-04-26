@@ -47,7 +47,27 @@
           <% end %>
         </div>
       </div>
-    </div>
+
+      <div class="small-6 large-6 columns">
+        <div class="panel">
+          
+          <div>
+            <% if current_user %>
+            <%= render "/reviews/form" %>
+            <% end %>
+          </div>  
+          
+        </div>
+        <% if @recipe.reviews != nil %>
+        <% @recipe.reviews.each do |review| %>
+          <div class="panel"> 
+            <%= review.body %>
+            <%= review.user.username %>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+</div>
     
   <div class="row">
     <div class="small-6 large-6 columns" id="metrics_panel">

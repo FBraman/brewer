@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="small-6 large-6 column">
+		<%=binding.pry %>
+		<%= form_for [@recipe, @review] do |f| %>
+
+		<div class="actions">
+			<%= f.submit "Review", class: "small radius button" %>
+		</div>
+
+		<div class="field">
+			<%= f.label :review %>
+			<%= f.text_field :body %>
+		</div>
+
+		<% end %>
+	</div>
+</div>

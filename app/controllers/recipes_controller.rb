@@ -13,6 +13,8 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.find(params[:id])
 		@ingredient = Ingredient.new
 		@process_step = ProcessStep.new
+		@review = Review.new
+		@user = current_user
 	end
 
 	def create
