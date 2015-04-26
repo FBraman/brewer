@@ -1,4 +1,5 @@
 class ProcessStepsController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
 
 	def new
 		@recipe = Recipe.find(params[:id])

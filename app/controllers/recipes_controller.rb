@@ -48,26 +48,15 @@ class RecipesController < ApplicationController
     redirect_to recipes_path, notice: 'Recipe deleted successfully!'
 	end
 
-
-
-	# def total_water
-	# end
-	# def into_ferementor
-	# end
-		
-	# end
-	# -taget gravity (preboil)
-	# -target gravity (original gravity)
-	# -target gravity (final gravity (post fermentation))
-	# -abv (target gravity)
-
 	private
-
 	def recipe_params
 		params.require(:recipe).permit(:recipe_name, :target_volume, :user_id, 
 			:efficiency, :mash_thickness, :mash_temp, :grain_temp, :boil_length)
 	end
 
-
-
+	def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
+  end
 end

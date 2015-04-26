@@ -211,9 +211,7 @@
   <div class="row">
   	<div class="panel">
 	    <div class="small-6 large-6 columns">
-	      <% if @recipe.owner?(current_user) %>
-	      <%= link_to "Edit Recipe", edit_recipe_path %>
-	      <% end %>
+	      <%= link_to "Recipe", recipe_path(@recipe) %>
 	    </div>
 
 	    <div class="small-6 large-6 columns">
@@ -223,5 +221,3 @@
 	    </div>
 	  </div>
   </div>
-
-<%= link_to "Recipe", recipe_path(@recipe) %>
