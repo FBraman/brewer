@@ -134,5 +134,14 @@ lets get some devise user sign in action going so that recipes can be properly a
 				-focus on manipulating information within panels and columns
 
 
+		4/24
+				-change and restyle the recipe show page to be the edit page, 
+				-make show page the simplest of print outs, later, upgrade the upates to JS and ajax for better UX, 
+				-if the function and styling guides are met, think about adding reviews to the recipe show page.
+				-protect edit/delete paths, from non owner, controller and view, 
+				-edit will still come from show, 
+		4/26
+
+
 
 	

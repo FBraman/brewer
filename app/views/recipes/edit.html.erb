@@ -87,6 +87,9 @@
      </div>
      	<div class="row" id="add_ingredient_panel">
   		<div class="small-6 large-6 columns">
+        <div id="recipe_panel_headings">
+          Add Ingredients:
+        </div>
     		<div class="panel">  
       		<% if @recipe.owner?(current_user) %>
         		<%= render "/ingredients/form" %>

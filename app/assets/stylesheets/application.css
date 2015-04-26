@@ -16,7 +16,9 @@
 
  */
 
-
+a {
+	color: black;
+}
 body {
 	background-color: #014181;
 	font-family: Cousine, sans-serif;

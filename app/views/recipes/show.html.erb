@@ -9,82 +9,49 @@
 
  
 
-  <div class="row" id="ingredients_panel">
+  <div class="row">
     <div class="small-6 large-6 columns">
-      <div>
-        <div id="recipe_panel_headings">
+      <div class="panel">
+        <div id="recipe_show_headings">
           Yeast: 
-        </div>
-          <div class="panel">      
+        </div>  
           <% @recipe.ingredients.each do |ingredient| %>
             <% if ingredient.component.version.include? "yeast" %>
-              <div class="panel">
-                <%= ingredient.amount  %>  pkg. 
-                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <% if @recipe.owner?(current_user) %>
-                  <div id="edit-delete-links">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
-                  </div>
-                <% end %>
-              </div>
+              <%= ingredient.amount  %>  pkg. 
+              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
             <% end %>
           <% end %>
-        </div>
-      </div>
 
-      <div>
-        <div id="recipe_panel_headings">
+        <div id="recipe_show_headings">
           Fermentable: 
         </div>
-          <div class="panel">
+        <div>
           <% @recipe.ingredients.each do |ingredient| %>
             <% if ingredient.component.version.include? "fermentable" %>
-              <div  class="panel">
                 <%= ingredient.amount  %>  lbs. 
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <% if @recipe.owner?(current_user) %>
-                  <div id="edit-delete-links">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
-                  </div>
-                <% end %>
-              </div>
             <% end %>
           <% end %>
         </div>
-      </div>
 
-      <div>
-        <div id="recipe_panel_headings">
+        <div id="recipe_show_headings">
           Hops: 
         </div>
-          <div class="panel">
           <% @recipe.ingredients.each do |ingredient| %>
             <% if ingredient.component.version.include? "hops" %>
-              <div  class="panel">
-                <%= ingredient.amount  %>  oz. 
-                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-                <%= ingredient.component.aa %> %AA
-                <%= ingredient.boil_time %>.min boil 
-                <% if @recipe.owner?(current_user) %>
-                  <div id="edit-delete-links">
-                    (<%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %> |
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>)
-                  </div>
-                <% end %>
-              </div>  
+              <%= ingredient.amount  %>  oz. 
+              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              <%= ingredient.component.aa %> %AA
+              <%= ingredient.boil_time %>.min boil  
             <% end %>
           <% end %>
         </div>
       </div>
-
-
     </div>
     
-
+  <div class="row">
     <div class="small-6 large-6 columns" id="metrics_panel">
-      <div id="recipe_panel_headings">
+      <div id="recipe_show_headings">
         Projected Metrics: 
       </div>
       <div class="panel">
@@ -156,8 +123,8 @@
         </div>
       </div>
 
-      <div id="recipe_panel_headings">
-        Brewing notes: 
+      <div id="recipe_show_headings">
+        Brewing notes:
       </div>
       <div class="panel">
         <div>
@@ -167,19 +134,12 @@
         </div>  
 
       <div>
-
         <% @recipe.process_steps.each do |process_step| %>
-            <div class="panel">
               <li>
                 <%= process_step.step.step_name %>
                 <%= process_step.step_notes %>
-                <div id="edit-delete-links">
-                 (<%= link_to "edit note", edit_recipe_process_step_path(process_step.recipe, process_step) %> | <%= link_to "delete note", recipe_process_step_path(process_step.recipe, process_step), method: :edit %>)
-                </div>
               </li>
-            </div>
           <% end %>
-
       </div>
     </div>
   </div>
@@ -189,29 +149,14 @@
 </div>
 
 
-<div class="row" id="add_ingredient_panel">
-  <div class="small-12 large-12 columns">
-    <div class="panel">  
-      <% if @recipe.owner?(current_user) %>
-        <%= render "/ingredients/form" %>
-      <% end %>
-    </div>
-  </div>
-<div>
-
   <div class="row">
     <div class="small-6 large-6 columns small-centered larger-centered">
       <% if @recipe.owner?(current_user) %>
       <%= link_to "Edit Recipe", edit_recipe_path %>
       <% end %>
     </div>
-
-    <div class="small-6 large-6 small-centered larger-centered columns">
-      <% if @recipe.owner?(current_user) %>
-        <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
-      <% end %>
-    </div>
   </div>
+
 
 
   
