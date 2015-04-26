@@ -13,12 +13,18 @@ class ReviewsController < ApplicationController
 
 	def create
 		@review = Review.create(review_params)
-		binding.pry
 		if @review.save
-			redirect_to recipes_path
+			redirect_to recipe_path(@review.recipe)
 		else
 			flash[:notice] = "Failed to save your review"
 		end
+	end
+
+	def destroy
+		@recipe = Recipe.find(params[:recipe_id])
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to edit_recipe_path(@recipe)
 	end
 
 

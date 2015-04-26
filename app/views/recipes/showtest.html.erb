@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="small-6 large-6 columns">
+      <div class="panel">    
+      <div> 
+        <div class="panel">
+          <ul> 
+            <% @recipe.ingredients.each do |ingredient| %>
+              <% if ingredient.component.version.include? "yeast" %>
+              <li>
+                <%= ingredient.amount  %>  pkg. 
+                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+  
+        <div class="panel">
+          <ul> 
+            <% @recipe.ingredients.each do |ingredient| %>
+              <% if ingredient.component.version.include? "fermentable" %>
+              <li>
+                <%= ingredient.amount  %>  lbs. 
+                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <ul> 
+            <% @recipe.ingredients.each do |ingredient| %>      
+              <% if ingredient.component.version.include? "hops" %>
+                <li>
+                  <%= ingredient.amount  %>  oz. 
+                  <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                  <%= ingredient.component.aa %> %AA
+                  <%= ingredient.boil_time %>.min boil
+                </li>  
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+

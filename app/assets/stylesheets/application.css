@@ -55,6 +55,6 @@ body {
 }
 
 .content {
-  margin-top: 60px;
   background: url("barley.jpg");
+  background-attachment: fixed;
 }

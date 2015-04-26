@@ -1,52 +1,63 @@
-    <div class="row" id="heading">
-      <div class="small-12 large-12 columns">
-        Recipe:
-        <%= @recipe.recipe_name %>
-        Target volume:
-        <%= @recipe.target_volume %> g
-      </div>        
-    </div>
+<div class="row" id="heading">
+  <div class="small-12 large-12 columns">
+
+    Recipe: <%= @recipe.recipe_name %></br>  Target volume: <%= @recipe.target_volume %> g
+
+  </div>        
+</div>
 
  
-
   <div class="row">
     <div class="small-6 large-6 columns">
-      <div class="panel">
-        <div id="recipe_show_headings">
-          Yeast: 
-        </div>  
-          <% @recipe.ingredients.each do |ingredient| %>
-            <% if ingredient.component.version.include? "yeast" %>
-              <%= ingredient.amount  %>  pkg. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-            <% end %>
-          <% end %>
+        <div class="panel">  
 
-        <div id="recipe_show_headings">
-          Fermentable: 
-        </div>
-        <div>
-          <% @recipe.ingredients.each do |ingredient| %>
-            <% if ingredient.component.version.include? "fermentable" %>
-                <%= ingredient.amount  %>  lbs. 
-                <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+          <div class="panel">
+            <ul>
+              Yeast: 
+              <% @recipe.ingredients.each do |ingredient| %>
+                <% if ingredient.component.version.include? "yeast" %>
+                  <li>
+                    <%= ingredient.amount  %>  pkg. 
+                    <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+
+        <div class="panel">
+          <ul> 
+            Fermentalbes:
+            <% @recipe.ingredients.each do |ingredient| %>
+              <% if ingredient.component.version.include? "fermentable" %>
+                <li>
+                  <%= ingredient.amount  %>  lbs. 
+                  <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
 
-        <div id="recipe_show_headings">
-          Hops: 
-        </div>
-          <% @recipe.ingredients.each do |ingredient| %>
-            <% if ingredient.component.version.include? "hops" %>
-              <%= ingredient.amount  %>  oz. 
-              <%= link_to ingredient.component.name, component_path(ingredient.component) %>
-              <%= ingredient.component.aa %> %AA
-              <%= ingredient.boil_time %>.min boil  
+       
+        <div class="panel">
+          <ul> 
+            Hops:
+            <% @recipe.ingredients.each do |ingredient| %>      
+              <% if ingredient.component.version.include? "hops" %>
+                <li>
+                  <%= ingredient.amount  %>  oz. 
+                  <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                  <%= ingredient.component.aa %> %AA
+                  <%= ingredient.boil_time %>.min boil
+                </li>  
+              <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
       </div>
+    </div>
+
 
       <div class="small-6 large-6 columns">
         <div class="panel">
@@ -57,24 +68,24 @@
             <% end %>
           </div>  
           
-        </div>
+      </div>
         <% if @recipe.reviews != nil %>
         <% @recipe.reviews.each do |review| %>
           <div class="panel"> 
-            <%= review.body %>
-            <%= review.user.username %>
+            <%= review.body %></br>
+            member: <%= review.user.username %>
           </div>
-        <% end %>
+          <% end %>
         <% end %>
       </div>
-</div>
+    </div>
     
   <div class="row">
     <div class="small-6 large-6 columns" id="metrics_panel">
-      <div id="recipe_show_headings">
-        Projected Metrics: 
-      </div>
       <div class="panel">
+        <div id="recipe_show_headings">
+          Projected Metrics: 
+        </div>
 
         <div>
           Mash water to grain:
@@ -143,9 +154,6 @@
         </div>
       </div>
 
-      <div id="recipe_show_headings">
-        Brewing notes:
-      </div>
       <div class="panel">
         <div>
           <% if @recipe.owner?(current_user) %>
@@ -154,10 +162,12 @@
         </div>  
 
       <div>
+        <div id="recipe_show_headings">
+          Brewing notes: 
+        </div>
         <% @recipe.process_steps.each do |process_step| %>
               <li>
-                <%= process_step.step.step_name %>
-                <%= process_step.step_notes %>
+                <%= process_step.step.step_name %>: <%= process_step.step_notes %>
               </li>
           <% end %>
       </div>
@@ -171,9 +181,11 @@
 
   <div class="row">
     <div class="small-6 large-6 columns small-centered larger-centered">
-      <% if @recipe.owner?(current_user) %>
-      <%= link_to "Edit Recipe", edit_recipe_path %>
-      <% end %>
+      <div class="panel">
+        <% if @recipe.owner?(current_user) %>
+          <%= link_to "Edit Recipe", edit_recipe_path %>
+        <% end %>
+      </div>
     </div>
   </div>
 

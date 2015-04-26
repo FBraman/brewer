@@ -12,7 +12,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	def create
     @ingredient = Ingredient.create(ingredient_params)
     if @ingredient.save
-      redirect_to recipe_path(@ingredient.recipe)
+      redirect_to edit_recipe_path(@ingredient.recipe)
     else
       flash[:notice] = "Failed to save your fermentable."
       render 'ingredients/show'
@@ -27,9 +27,10 @@ before_action :authenticate_user!, except: [:index, :show]
 
    def update
     @ingredient = Ingredient.update(params[:id], ingredient_params)
+    @recipe = @ingredient.recipe
     if @ingredient.save
       flash[:notice] = "Ingredient updated."
-      redirect_to @ingredient.recipe
+      redirect_to edit_recipe_path(@ingredient)
     else
       flash[:notice] = "Update failed"
       render :new
@@ -42,7 +43,7 @@ before_action :authenticate_user!, except: [:index, :show]
       @recipe = Recipe.find(params[:recipe_id])
       @ingredient = Ingredient.find(params[:id])
       @ingredient.destroy
-      redirect_to recipe_path(@recipe)
+      redirect_to edit_recipe_path(@recipe)
     else
       flash[:notice] = "You cannot change recipes you did not create"
     end

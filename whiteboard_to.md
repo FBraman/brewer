@@ -140,7 +140,11 @@ lets get some devise user sign in action going so that recipes can be properly a
 				-if the function and styling guides are met, think about adding reviews to the recipe show page.
 				-protect edit/delete paths, from non owner, controller and view, 
 				-edit will still come from show, 
-		4/26
+
+		4/25, style style style, keep moving the edit/show swap
+
+		4/26 edit/show swapped, reviews added, admin added merge and clean up
+		
 
 
 

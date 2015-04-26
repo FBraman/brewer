@@ -209,12 +209,16 @@
 
 
   <div class="row">
-  	<div class="panel">
-	    <div class="small-6 large-6 columns">
+	  <div class="small- large-6 columns">
+      <div class="panel">
+      <div>
 	      <%= link_to "Recipe", recipe_path(@recipe) %>
 	    </div>
+    </div>
+  </div>
 
-	    <div class="small-6 large-6 columns">
+	  <div class="small-6 large-6 columns">
+      <div class="panel">
 	      <% if @recipe.owner?(current_user) %>
 	        <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete %>
 	      <% end %>

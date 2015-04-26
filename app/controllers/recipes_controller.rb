@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.update(params[:id], recipe_params)
     if @recipe.save
       flash[:notice] = "Recipe updated successfully!"
-      redirect_to @recipe
+      redirect_to edit_recipe_path
     else
       flash[:notice] = "Update failed"
       render :new

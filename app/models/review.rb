@@ -5,4 +5,9 @@ class Review < ActiveRecord::Base
 	validates :recipe_id, presence: true
 	validates :user_id, presence: true
 	validates :body, presence: true
+
+	def owns?(current_user)
+    user == current_user
+  end
+
 end
