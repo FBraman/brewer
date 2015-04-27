@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id])
     @ingredient = Ingredient.new
     @process_step = ProcessStep.new
+    @review = Review.new
   end
 
   def update

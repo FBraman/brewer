@@ -23,6 +23,7 @@ before_action :authenticate_user!, except: [:index, :show]
     @ingredient = Ingredient.find(params[:id])
     @recipe = @ingredient.recipe
     @ingredient = @recipe.ingredients.find(params[:id])
+    @user = current_user
   end
 
    def update

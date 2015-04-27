@@ -12,10 +12,16 @@
 	  	<%= f.label :amount %>
 	  	<%= f.number_field :amount, class: "text_field", step: 0.01 %>
   	</div>
+
+  	<div>
+  		<%= f.hidden_field :user_id, value: current_user.id %>
+  	</div>
   	
   	<div class="actions">
       <%= f.submit "Add grain", class: "small radius button" %>
     </div>
+
+
 
   	<% end %>
     </div>
