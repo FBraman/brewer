@@ -1,6 +1,6 @@
 == README
 
-This is recipe builder for brewing beer. It allows the user to compare metrics for given recipes and take notes for future brew days. It also allows brewers to share and comment on each others recipes. Ideally, it is a process productivity tool, allowing the brewer to gain by his experience and the experience of others.
+This is a recipe builder for brewing beer. It allows the user to compare metrics for given recipes and take notes for future brew days. It also allows brewers to share and comment on each others recipes. Ideally, it is a process productivity tool, allowing the brewer to gain by his experience and the experience of others.
 
 * Ruby version
 2.1.5
