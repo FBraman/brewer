@@ -51,7 +51,5 @@ gem 'compass-rails'
 
   gem 'devise'
 
-  gem 'simple_form'
-
 end
 
