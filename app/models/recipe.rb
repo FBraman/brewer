@@ -154,4 +154,8 @@ class Recipe < ActiveRecord::Base
 	def owner?(current_user)
     user == current_user
   end
+
+  def self.search(search)
+    where("recipe_name like ?", "%#{search}%")
+  end
 end

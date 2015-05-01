@@ -6,7 +6,11 @@ class RecipesController < ApplicationController
 	end
 
 	def index
-		@recipes = Recipe.all
+		if params[:search]
+			@recipes = Recipe.search(params[:search]) #consider an order, and add page params when pagination added
+		else
+			@recipes = Recipe.all
+		end
 	end
 
 	def show
