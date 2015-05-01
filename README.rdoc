@@ -11,6 +11,6 @@ postgres database
 * Database initialization
 Run rake db:create
 		rake db:migrate
-		bin/rake db:seed
+		rake db:seed
 
 
