@@ -117,6 +117,20 @@
         </div>
 
         <div>
+          Projected ABV:
+          <%= @recipe.alcohol_by_volume %>%
+        </div>
+
+        <div>
+          IBUs:
+          <%= @recipe.ibu %>
+          <% if @recipe.ibu > 110 %>
+            IBUs ceiling below 100. Higher numbers may affect flavor if not bitterness.
+          <% end %>
+        </div>
+
+
+        <div>
           Strike water: 
           <%= @recipe.strike_water %>
         </div>
@@ -129,14 +143,6 @@
         <div>
           Total water:
           <%= @recipe.total_water %>
-        </div>
-
-         <div>
-          IBUs:
-          <%= @recipe.ibu %>
-          <% if @recipe.ibu > 110 %>
-            Actual IBU contained in finished beer is gernerally understood as limited to around 100 (or below) IBU. Numbers higher than 100 will effect taste in ways other than bitterness.
-          <% end %>
         </div>
 
         <div>

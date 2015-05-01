@@ -146,6 +146,11 @@ class Recipe < ActiveRecord::Base
 		ibus.to_i
 	end
 
+	def alcohol_by_volume
+		abv = ((76.08*(target_og.to_f-projected_final_gravity.to_f)/(1.775-target_og.to_f))*(projected_final_gravity.to_f/0.794))
+		sprintf("%.1f", abv)
+	end
+
 	def owner?(current_user)
     user == current_user
   end
