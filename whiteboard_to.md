@@ -145,6 +145,8 @@ lets get some devise user sign in action going so that recipes can be properly a
 
 		4/26 edit/show swapped, reviews added, admin added merge and clean up
 		
+		5/2, need a brew "instance" to make metric comparison useful, should move metrics that don't matter to others off show page, like grain temp and strike temp, useful for brew instance, brew instance view will be a mash up of edit and show pages, a view of the recipe with form for adding this brew instance' metrics. long term it would be nice to add some js timers, long term boil of rate needs to be there for the user, not a constant.
+		-db table, brew_instance, date, grain_temp, mash_temp preboil_g, og, time to boil from mash, time to chill from boil, notes, fg, attenuation, abv,  (attn and abv should be calculated automatically, but show on the screen as default)
 
 
 

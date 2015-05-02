@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="small-6 large-6 columns">
+<div class="panel">
+
+<%= form_for [@recipe, @brew_instance] do |f| %>
+
+
+  
+    <div class="actions">
+      <%= f.submit "Add a brew to this recipe", class: "small radius button" %>
+    </div>
+
+    <div>
+      <%= f.label :grain_temp %>
+      <%= f.number_field :grain_temp, class: "text_field", step: 1 %>
+    </div>
+
+    <div>
+    	<%= f.label :strikewater_temp %>
+    	<%= f.number_field :strikewater_temp, class: "text_field", step: 1 %>
+    </div>
+
+    <div>
+      <%= f.label :mash_temp %>
+      <%= f.number_field :mash_temp, class: "text_field", step: 1 %>
+    </div>
+
+    <div>
+      <%= f.label :preboil_gravity %>
+      <%= f.number_field :preboil_gravity, class: "text_field", step: 0.001 %>
+    </div>
+
+    <div>
+      <%= f.label :preboil_volume %>
+      <%= f.number_field :preboil_volume, class: "text_field" %>
+    </div>
+
+    <div>
+      <%= f.label :boil_time %>
+      <%= f.number_field :boil_time, class: "text_field" %>
+    </div>
+
+    <div>
+      <%= f.label :post_boil_volume %>
+      <%= f.number_field :post_boil_volume, class: "text_field" %>
+    </div>
+
+    <div>
+      <%= f.label :original_gravity %>
+      <%= f.number_field :original_gravity, class: "text_field", step: 0.001 %>
+    </div>
+
+    <div>
+      <%= f.label :final_gravity %>
+      <%= f.number_field :final_gravity, class: "text_field", step: 0.001 %>
+    </div>
+
+    <div>
+      <%= f.label :mash_to_boil_time %>
+      <%= f.number_field :mash_to_boil_time, class: "text_field" %>
+    </div>
+
+    <div>
+      <%= f.label :boil_to_pitch_time %>
+      <%= f.number_field :boil_to_pitch_time, class: "text_field" %>
+    </div>
+
+    <div>
+      <%= f.label :notes %>
+      <%= f.text_field :notes %>
+    </div>
+
+    <div>
+      <%= f.label :attenuation %>
+      <%= f.number_field :attenuation, class: "text_field", step: 1 %>
+    </div>
+
+    <div class="field">
+    	<%= f.hidden_field :recipe_id, value: @recipe.id %>
+    </div>
+
+  <% end %>
+
+</div>
+</div>
+</div>

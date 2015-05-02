@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :ingredients
     resources :process_steps
     resources :reviews
+    resources :brew_instances
   end
 
   

@@ -9,7 +9,7 @@
  
   <div class="row">
     <div class="small-6 large-6 columns">
-        <div class="panel">  
+        <div class="panel" id="show_panel">  
 
           <div class="panel">
             <ul>
@@ -60,7 +60,7 @@
 
 
       <div class="small-6 large-6 columns">
-        <div class="panel">
+        <div class="panel" id="show_panel">
           
           <div>
             <% if current_user %>
@@ -82,7 +82,7 @@
     
   <div class="row">
     <div class="small-6 large-6 columns" id="metrics_panel">
-      <div class="panel">
+      <div class="panel" >
         <div id="recipe_show_headings">
           Projected Metrics: 
         </div>
@@ -190,6 +190,12 @@
       <div class="panel">
         <% if @recipe.owner?(current_user) %>
           <%= link_to "Edit Recipe", edit_recipe_path %>
+        <% end %>
+      </div>
+
+      <div class="panel">
+        <% if @recipe.owner?(current_user) %>
+          <%= link_to "Brew Recipe", new_recipe_brew_instance_path(@recipe) %>
         <% end %>
       </div>
     </div>
