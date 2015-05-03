@@ -1,3 +1,168 @@
 
-
+<div class="row">
 <%= render "form" %>
+
+
+    <div class="small-6 large-6 columns" id="metrics_panel">
+      <div class="panel" >
+        <div id="recipe_show_headings">
+          Projected Metrics: 
+        </div>
+
+        <div>
+          Mash water to grain:
+          <%= @recipe.mash_thickness %>q/.lb
+        </div>
+
+        <div>
+          Efficiency:
+          <%= @recipe.efficiency %>
+        </div>
+
+        <div>
+          Grain temp:
+          <%= @recipe.grain_temp %>
+
+        <div>
+          Preboil gravity: 
+          <%= @recipe.preboil_gravity %>
+        </div>
+
+        <div>
+          Projected original gravity: 
+          <%= @recipe.target_og %>
+        </div>
+
+        <div>
+          Projected final gravity:
+          <%= @recipe.projected_final_gravity %>
+        </div>
+
+        <div>
+          Projected ABV:
+          <%= @recipe.alcohol_by_volume %>%
+        </div>
+
+        <div>
+          IBUs:
+          <%= @recipe.ibu %>
+          <% if @recipe.ibu > 110 %>
+            IBUs ceiling below 100. Higher numbers may affect flavor if not bitterness.
+          <% end %>
+        </div>
+
+
+        <div>
+          Strike water: 
+          <%= @recipe.strike_water %>
+        </div>
+
+        <div>
+          Sparge water: 
+          <%= @recipe.sparge_water %>
+        </div>
+
+        <div>
+          Total water:
+          <%= @recipe.total_water %>
+        </div>
+
+        <div>
+          <% if @recipe.mash_temp %>
+            Mash temp:
+            <%= @recipe.mash_temp %>
+          <% end %>
+        </div>
+
+        <div>
+          <% if @recipe.mash_temp %>  
+            Strike water temp:
+            <%= @recipe.strike_water_temp %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel">
+      
+
+      <div>
+        <div id="recipe_show_headings">
+          Brewing notes: 
+        </div>
+        <% @recipe.process_steps.each do |process_step| %>
+              <li>
+                <%= process_step.step.step_name %>: <%= process_step.step_notes %>
+              </li>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="small-6 large-6 columns">
+        <div class="panel" id="show_panel">  
+
+          <div class="panel">
+            <ul>
+              Yeast: 
+              <% @recipe.ingredients.each do |ingredient| %>
+                <% if ingredient.component.version.include? "yeast" %>
+                  <li>
+                    <%= ingredient.amount  %>  pkg. 
+                    <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+
+        <div class="panel">
+          <ul> 
+            Fermentalbes:
+            <% @recipe.ingredients.each do |ingredient| %>
+              <% if ingredient.component.version.include? "fermentable" %>
+                <li>
+                  <%= ingredient.amount  %>  lbs. 
+                  <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+       
+        <div class="panel">
+          <ul> 
+            Hops:
+            <% @recipe.ingredients.each do |ingredient| %>      
+              <% if ingredient.component.version.include? "hops" %>
+                <li>
+                  <%= ingredient.amount  %>  oz. 
+                  <%= link_to ingredient.component.name, component_path(ingredient.component) %>
+                  <%= ingredient.component.aa %> %AA
+                  <%= ingredient.boil_time %>.min boil
+                </li>  
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="small-6 large-6">
+  		<div class="panel">	
+  			<%= link_to "Recipe", recipe_path(@recipe) %>
+
+  		</div>
+  	</div>
+  </div>
