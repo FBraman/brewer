@@ -31,7 +31,7 @@ before_action :authenticate_user!, except: [:index, :show]
     @recipe = @ingredient.recipe
     if @ingredient.save
       flash[:notice] = "Ingredient updated."
-      redirect_to edit_recipe_path(@ingredient)
+      redirect_to edit_recipe_path(@ingredient.recipe)
     else
       flash[:notice] = "Update failed"
       render :new
@@ -51,6 +51,7 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def ingredient_params
+    binding.pry
   	params.require(:ingredient).permit(:recipe_id, 
       :component_id, :version, :amount, :boil_time)
   end

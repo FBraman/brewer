@@ -29,7 +29,7 @@
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-delete-links">
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+                    (<%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %> | <%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>)
                   </div>
                 <% end %>
               </div>
@@ -50,7 +50,7 @@
                 <%= link_to ingredient.component.name, component_path(ingredient.component) %>
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-delete-links">
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+                    (<%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %> | <%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>)
                   </div>
                 <% end %>
               </div>
@@ -73,7 +73,7 @@
                 <%= ingredient.boil_time %>.min boil 
                 <% if @recipe.owner?(current_user) %>
                   <div id="edit-delete-links">
-                    <%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %>
+                    (<%= link_to "remove ingredient", recipe_ingredient_path(ingredient.recipe, ingredient), method: :delete %> | <%= link_to "edit ingredient", edit_recipe_ingredient_path(ingredient.recipe, ingredient) %>)
                   </div>
                 <% end %>
               </div>  
