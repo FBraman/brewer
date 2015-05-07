@@ -12,6 +12,13 @@
 	  	<%= f.label :amount %>
 	  	<%= f.number_field :amount, class: "text_field", step: 0.01 %>
   	</div>
+
+  	<% if @ingredient.component.version.include? "hops" %>
+  	<div>
+	  	<%= f.label :boil_time %>
+	  	<%= f.number_field :boil_time, class: "text_field", step: 0.01 %>
+  	</div>
+  	<% end %>
   	
   	<div class="actions">
       <%= f.submit "update ingredient", class: "small radius button", method: "post" %>

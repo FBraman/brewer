@@ -1,7 +1,14 @@
+<div class="row" id="heading">
+      <div class="small-12 large-12 columns">
+        Recipe:
+        <%= @recipe.recipe_name %> </br>
+        Target volume:
+        <%= @recipe.target_volume %> g
+      </div>        
+    </div>
 
 <div class="row">
-<%= render "form" %>
-
+  <%= render "form" %>
 
     <div class="small-6 large-6 columns" id="metrics_panel">
       <div class="panel" >

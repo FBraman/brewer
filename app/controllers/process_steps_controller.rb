@@ -19,7 +19,7 @@ before_action :authenticate_user!, except: [:index, :show]
 		@recipe = Recipe.find(params[:recipe_id])
     @process_step = ProcessStep.create(process_step_params)
     if @process_step.save
-      redirect_to recipe_path(@process_step.recipe)
+      redirect_to edit_recipe_path(@process_step.recipe)
     else
       flash[:notice] = "Failed to save your fermentable."
       render 'process_step/show'
@@ -32,7 +32,7 @@ before_action :authenticate_user!, except: [:index, :show]
   		@recipe = Recipe.find(params[:recipe_id])
   		@process_step = ProcessStep.find(params[:id])
   		@process_step.destroy
-  		redirect_to recipe_path(@recipe)
+  		redirect_to edit_recipe_path(@recipe)
   	else
   		flash[:notice] = "You cannot change recipes you did not create"
   	end
@@ -57,6 +57,4 @@ before_action :authenticate_user!, except: [:index, :show]
   def process_step_params
   	params.require(:process_step).permit(:step_id, :recipe_id, :step_notes)
   end
- 
-
 end

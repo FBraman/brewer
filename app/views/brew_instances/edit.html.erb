@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="small-12 large-12 columns"> 
+		<div id="heading">
+			Edit Brew Instance
+		</div>
+	</div>
+</div>
+
+
+
+<div row="row" id="individual_edit_panel">
+	<div class="small-12 large-12 columns">
+		
+		<div class="small-6 large-6 columns">
+			<div class="panel">
+				<%= render "form" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="small-6 large-6 columns">
+		<div class="panel">
+			<%= link_to "edit recipe", edit_recipe_path(@recipe) %>
+		</div>
+	</div>
+</div>

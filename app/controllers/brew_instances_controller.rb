@@ -6,9 +6,17 @@ before_action :authenticate_user!, except: [:index, :show]
     @brew_instance = BrewInstance.new
   end
   
-	# def show
-	# 	@brew_instance = brew_instance.find(params[:id])
-	# end
+	def show
+		@brew_instance = brew_instance.find(params[:id])
+	end
+
+  def index
+    if params[:search]
+      @brew_instances = BrewInstances.search(params[:search]) #consider an order, and add page params when pagination added
+    else
+      @brew_instances = BrewInstances.all
+    end
+  end
 
 	def create
     @brew_instance = BrewInstance.create(brew_instance_params)
@@ -20,12 +28,12 @@ before_action :authenticate_user!, except: [:index, :show]
     end
   end
 
-  # def edit
-  #   @brew_instance = BrewInstance.find(params[:id])
-  #   @recipe = @brew_instance.recipe
-  #   @brew_instance = @recipe.brew_instance.find(params[:id])
-  #   @user = current_user
-  # end
+  def edit
+    @brew_instance = BrewInstance.find(params[:id])
+    @recipe = @brew_instance.recipe
+    @brew_instance = @recipe.brew_instance.find(params[:id])
+    @user = current_user
+  end
 
   #  def update
   #   @brew_instance = BrewInstance.update(params[:id], brew_instance_params)

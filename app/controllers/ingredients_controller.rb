@@ -51,7 +51,6 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def ingredient_params
-    binding.pry
   	params.require(:ingredient).permit(:recipe_id, 
       :component_id, :version, :amount, :boil_time)
   end
