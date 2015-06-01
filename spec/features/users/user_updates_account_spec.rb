@@ -14,7 +14,7 @@ feature "user updates account", %{
 		fill_in "Email", with: "foo@bar.com"
 		fill_in "Current password", with: user.password
 
-		click_button "Update"
+		click_button("Update")
 
 		expect(page).to have_content("Your account has been updated successfully.")
 
