@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
+
 	
 	def new
 		@recipe = Recipe.new
@@ -41,8 +42,13 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.update(params[:id], recipe_params)
     if @recipe.save
-      flash[:notice] = "Recipe updated successfully!"
-      redirect_to edit_recipe_path
+    	respond_to do |format|
+				format.html { redirect_to @recipe }
+				format.js #on { render json: [@recipe, @recipe.ingredients] }
+			end
+			# end
+   #    flash[:notice] = "Recipe updated successfully!"
+   #    redirect_to edit_recipe_path
     else
       flash[:notice] = "Update failed"
       render :new

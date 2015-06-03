@@ -1,9 +1,7 @@
-<div class="row">
-  <div class="small-6 large-6 column"><%= form_for [@recipe, @ingredient] do |f| %>
 
-    <div class="actions">
-      <%= f.submit "Add grain", class: "small radius button" %>
-    </div>
+
+    <div id="grain-form">
+    <%= form_for [@recipe, @ingredient] do |f| %>
 
     <div class="field">
       <%= f.select :component_id, options_for_select(Component.where(version: "fermentable_grain").map{|s|[s.name, s.id]}) %>
@@ -18,14 +16,15 @@
     	<%= f.hidden_field :recipe_id, value: @recipe.id %>
     </div>
 
+    <div class="actions">
+      <%= f.submit "Add grain", class: "small radius button" %>
+    </div>
+
   <% end %>
-
-
-<%= form_for [@recipe, @ingredient] do |f| %>
-
-  <div class="actions">
-    <%= f.submit "Add hops", class: "small radius button" %>
   </div>
+
+<div id="hop-form">
+<%= form_for [@recipe, @ingredient], remote: true do |f| %>
 
   <div class="field">
     <%= f.select :component_id, options_for_select(Component.where(version: "hops").map{|s|[s.name, s.id]}) %>
@@ -44,14 +43,16 @@
       <%= f.hidden_field :recipe_id, value: @recipe.id %>
     </div>
 
+    <div class="actions">
+      <%= f.submit "Add hops", class: "small radius button" %>
+    </div>
+
   <% end %>
+</div>
 
 
+<div id="yeast-form">
 <%= form_for [@recipe, @ingredient] do |f| %>
-
-  <div class="actions">
-    <%= f.submit "Add yeast", class: "small radius button" %>
-  </div>
 
   <div class="field">
     <%= f.select :component_id, options_for_select(Component.where(version: "yeast").map{|s|[s.name, s.id]}) %>
@@ -66,9 +67,12 @@
     <%= f.hidden_field :recipe_id, value: @recipe.id %>
   </div>
 
-  
+   <div class="actions">
+    <%= f.submit "Add yeast", class: "small radius button" %>
+  </div>
 
   <% end %>
 </div>
-</div>
+
+
 
