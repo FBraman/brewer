@@ -7,14 +7,15 @@ before_action :authenticate_user!, except: [:index, :show]
   end
   
 	def show
-		@brew_instance = brew_instance.find(params[:id])
+		@brew_instance = BrewInstance.find(params[:recipe_id])
 	end
 
   def index
+    @recipe = Recipe.find(params[:recipe_id])
     if params[:search]
       @brew_instances = BrewInstances.search(params[:search]) #consider an order, and add page params when pagination added
     else
-      @brew_instances = BrewInstances.all
+      @brew_instances = @recipe.brew_instances.all
     end
   end
 

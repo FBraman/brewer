@@ -1,0 +1,171 @@
+<div class="row" id="title">
+	<div class="small-6 large-6 columns">
+		Recipe comparison
+	</div>
+</div>
+
+<div class="row" id="comparison-metrics">
+	<div class="small-6 large-6 columns">
+		<div class="panel">
+      <div id="recipe_show_headings">
+        Projected Metrics: 
+      </div>
+
+      <div>
+        Mash water to grain:
+        <%= @brew_instance.recipe.mash_thickness %>q/.lb
+      </div>
+
+      <div>
+        Efficiency:
+        <%= @brew_instance.recipe.efficiency %>
+      </div>
+
+      <div>
+        Grain temp:
+        <%= @brew_instance.recipe.grain_temp %>
+
+      <div>
+        Preboil gravity: 
+        <%= @brew_instance.recipe.preboil_gravity %>
+      </div>
+
+      <div>
+        Projected original gravity: 
+        <%= @brew_instance.recipe.target_og %>
+      </div>
+
+      <div>
+        Projected final gravity:
+        <%= @brew_instance.recipe.projected_final_gravity %>
+      </div>
+
+      <div>
+        Projected ABV:
+        <%= @brew_instance.recipe.alcohol_by_volume %>%
+      </div>
+
+      <div>
+        IBUs:
+        <%= @brew_instance.recipe.ibu %>
+        <% if @brew_instance.recipe.ibu > 110 %>
+          IBUs ceiling below 100. Higher numbers may affect flavor if not bitterness.
+        <% end %>
+      </div>
+
+
+      <div>
+        Strike water: 
+        <%= @brew_instance.recipe.strike_water %>
+      </div>
+
+      <div>
+        Sparge water: 
+        <%= @brew_instance.recipe.sparge_water %>
+      </div>
+
+      <div>
+        Total water:
+        <%= @brew_instance.recipe.total_water %>
+      </div>
+
+      <div>
+        <% if @brew_instance.recipe.mash_temp %>
+          Mash temp:
+          <%= @brew_instance.recipe.mash_temp %>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @brew_instance.recipe.mash_temp %>  
+          Strike water temp:
+          <%= @brew_instance.recipe.strike_water_temp %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+	</div>
+
+	<div class="small-6 large-6 columns">
+		<div id="brewed-metrics">
+			<div class="panel">
+			<div id="recipe_show_headings">
+        Projected Metrics: 
+      </div>
+
+      <div>
+        Mash water to grain:
+        <%= @brew_instance.recipe.mash_thickness %>q/.lb
+      </div>
+
+      <div>
+        Efficiency:
+        <%= @brew_instance.recipe.efficiency %>
+      </div>
+
+      <div>
+        Grain temp:
+        <%= @brew_instance.grain_temp %>
+
+      <div>
+        Preboil gravity: 
+        <%= @brew_instance.preboil_gravity %>
+      </div>
+
+      <div>
+        Original gravity: 
+        <%= @brew_instance.original_gravity %>
+      </div>
+
+      <div>
+        Projected final gravity:
+        <%= @brew_instance.final_gravity %> 
+      </div>
+
+      <div>
+        Projected ABV:
+        <%= @brew_instance.recipe.alcohol_by_volume %> ###changesource###
+      </div>
+
+      <div>
+        IBUs:
+        <%= @brew_instance.recipe.ibu %>
+        <% if @brew_instance.recipe.ibu > 110 %>
+          IBUs ceiling below 100. Higher numbers may affect flavor if not bitterness.
+        <% end %>
+      </div>
+
+
+      <div>
+        Strike water: 
+        <%= @brew_instance.recipe.strike_water %> ###changesource###
+      </div>
+
+      <div>
+        Sparge water: 
+        <%= @brew_instance.recipe.sparge_water %> ###changesource###
+      </div>
+
+      <div>
+        Total water:
+        <%= @brew_instance.recipe.total_water %> ###changesource###
+      </div>
+
+      <div>
+        <% if @brew_instance.mash_temp %>
+          Mash temp:
+          <%= @brew_instance.mash_temp %>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @brew_instance.mash_temp %>  
+          Strike water temp:
+          <%= @brew_instance.strikewater_temp %>
+        <% end %>
+      </div>
+
+    </div>
+		</div>
+	</div>
+</div>

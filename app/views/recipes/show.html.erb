@@ -206,6 +206,12 @@
           <%= link_to "Brew Recipe", new_recipe_brew_instance_path(@recipe) %>
         <% end %>
       </div>
+
+       <div class="panel">
+        <% if @recipe.owner?(current_user) %>
+          <%= link_to "Brewed Recipe", recipe_brew_instances_path(@recipe) %>
+        <% end %>
+      </div>
     </div>
   </div>
 
